@@ -12,12 +12,19 @@ trap cleanup EXIT
 
 echo "Gathering project information..."
 
+# Check if an argument is provided
+if [ -z "$1" ]; then
+    directory="."
+else
+    directory="$1"
+fi
+
 # Check if tree command exists
 if ! command -v tree &> /dev/null; then
     echo "Warning: 'tree' command not found. Using 'find' instead."
-    find . -type d | sed 's|[^/]*/|  |g' > project_structure.txt
+    find "$directory" -type d | sed 's|[^/]*/|  |g' > project_structure.txt
 else
-    tree . > project_structure.txt
+    tree "$directory" > project_structure.txt
 fi
 
 # Search for sensitive information
@@ -25,14 +32,14 @@ echo "Scanning for sensitive information..."
 {
     echo "=== Sensitive Information Scan ==="
     grep -i -r --exclude="sensitive_info.txt" --exclude="project_info.txt" \
-         -E "(API_KEY|SECRET|PASSWORD|TOKEN|DATABASE_URL)" . 2>/dev/null || echo "No sensitive patterns found"
+         -E "(API_KEY|SECRET|PASSWORD|TOKEN|DATABASE_URL)" "$directory" 2>/dev/null || echo "No sensitive patterns found"
 } > sensitive_info.txt
 
 # Count lines of code for various file types
 echo "Counting lines of code..."
 {
     echo "=== Line Counts ==="
-    find . -type f \( -name "*.py" -o -name "*.js" -o -name "*.ts" -o -name "*.java" \
+    find "$directory" -type f \( -name "*.py" -o -name "*.js" -o -name "*.ts" -o -name "*.java" \
                      -o -name "*.c" -o -name "*.cpp" -o -name "*.sh" -o -name "*.go" \
                      -o -name "*.rb" -o -name "*.php" \) -exec wc -l {} + 2>/dev/null || echo "No code files found"
 } > line_counts.txt

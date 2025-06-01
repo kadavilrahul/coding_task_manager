@@ -33,9 +33,16 @@ call_gemini_api() {
         "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=$GEMINI_API_KEY"
 }
 
+# Check if an argument is provided
+if [ -z "$1" ]; then
+    directory="."
+else
+    directory="$1"
+fi
+
 # Check if project_info.txt exists
-if [[ ! -f "project_info.txt" ]]; then
-    echo "Error: project_info.txt not found. Please run project_info.sh first."
+if [[ ! -f "$directory/project_info.txt" ]]; then
+    echo "Error: project_info.txt not found in $directory. Please run project_info.sh in that directory first."
     exit 1
 fi
 
@@ -53,7 +60,7 @@ if ! command -v jq &> /dev/null; then
 fi
 
 echo "Reading project information..."
-project_info=$(cat project_info.txt)
+project_info=$(cat "$directory/project_info.txt")
 
 # Create comprehensive prompt
 prompt="Please analyze the following project information and generate a Product Requirements Document (PRD) with the following sections:
