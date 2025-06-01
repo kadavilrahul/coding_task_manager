@@ -29,7 +29,7 @@ This guide provides commands to install and run the Agno Code Tools.
         ```bash
         export GEMINI_API_KEY="YOUR_GEMINI_API_KEY"
         ```
-        
+        export GEMINI_API_KEY=AIzaSyA5bfenANZwEDV5vfSWWaFWuX4cD2ejJSQ
         To make it permanent, add it to your shell profile:
         ```bash
         echo 'export GEMINI_API_KEY="YOUR_GEMINI_API_KEY"' >> ~/.bashrc
@@ -63,7 +63,7 @@ This guide provides commands to install and run the Agno Code Tools.
 5.  **Run the project info script:**
 
     ```bash
-    ./project_info.sh
+    bash coding_task_manager/version_03_shellscript/project_info.sh
     ```
 
     This will:
@@ -76,7 +76,7 @@ This guide provides commands to install and run the Agno Code Tools.
 6.  **Generate a PRD using Gemini:**
 
     ```bash
-    ./generate_prd.sh
+    bash coding_task_manager/version_03_shellscript/generate_prd.sh
     ```
 
     This will:

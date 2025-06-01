@@ -2,35 +2,60 @@
 
 set -e  # Exit on any error
 
-# Function to escape JSON strings
-escape_json() {
-    echo "$1" | sed 's/\\/\\\\/g; s/"/\\"/g; s/$/\\n/g' | tr -d '\n'
+# Function to cleanup temporary files
+cleanup() {
+    rm -f /tmp/gemini_payload_*.json /tmp/escaped_prompt.json
 }
+
+# Set trap to cleanup on exit
+trap cleanup EXIT
 
 # Function to call Gemini API safely
 call_gemini_api() {
     local prompt="$1"
-    local escaped_prompt
     
-    # Escape the prompt for JSON
-    escaped_prompt=$(escape_json "$prompt")
+    # Create a temporary file for the JSON payload
+    local temp_json=$(mktemp /tmp/gemini_payload_XXXXXX.json)
     
-    # Prepare JSON payload
-    local json_payload
-    json_payload=$(jq -n --arg text "$prompt" '{
-        contents: [{
-            parts: [{
-                text: $text
-            }]
+    # Create JSON payload using a temporary file to avoid argument length limits
+    if ! echo "$prompt" | jq -R -s . > /tmp/escaped_prompt.json; then
+        echo "Error: Failed to escape prompt for JSON"
+        rm -f "$temp_json"
+        return 1
+    fi
+    
+    cat > "$temp_json" << EOF
+{
+    "contents": [{
+        "parts": [{
+            "text": $(cat /tmp/escaped_prompt.json)
         }]
-    }')
+    }]
+}
+EOF
     
-    # Make API call
-    curl -s -X POST \
+    # Clean up the escaped prompt file
+    rm -f /tmp/escaped_prompt.json
+    
+    # Validate the JSON before sending
+    if ! jq . "$temp_json" > /dev/null; then
+        echo "Error: Generated invalid JSON payload"
+        rm -f "$temp_json"
+        return 1
+    fi
+    
+    # Make API call using the temporary file
+    local response
+    response=$(curl -s -X POST \
         -H "Content-Type: application/json" \
         -H "User-Agent: AgnoCodeTools/1.0" \
-        -d "$json_payload" \
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=$GEMINI_API_KEY"
+        -d @"$temp_json" \
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=$GEMINI_API_KEY")
+    
+    # Clean up temporary file
+    rm -f "$temp_json"
+    
+    echo "$response"
 }
 
 # Check if an argument is provided
@@ -61,6 +86,19 @@ fi
 
 echo "Reading project information..."
 project_info=$(cat "$directory/project_info.txt")
+
+# Check the size of the project info
+project_info_size=${#project_info}
+if [ $project_info_size -gt 100000 ]; then
+    echo "Warning: Project information is quite large ($project_info_size characters)."
+    echo "This may take longer to process and could hit API limits."
+    read -p "Do you want to continue? (y/N): " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo "Operation cancelled."
+        exit 0
+    fi
+fi
 
 # Create comprehensive prompt
 prompt="Please analyze the following project information and generate a Product Requirements Document (PRD) with the following sections:

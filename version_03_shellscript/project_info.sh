@@ -19,14 +19,6 @@ else
     directory="$1"
 fi
 
-# Check if tree command exists
-if ! command -v tree &> /dev/null; then
-    echo "Warning: 'tree' command not found. Using 'find' instead."
-    find "$directory" -type d | sed 's|[^/]*/|  |g' > project_structure.txt
-else
-    tree "$directory" > project_structure.txt
-fi
-
 # Search for sensitive information
 echo "Scanning for sensitive information..."
 {
@@ -60,8 +52,6 @@ echo "Creating project_info.txt..."
     echo "=== PROJECT INFORMATION ==="
     echo "Generated on: $(date)"
     echo "Project Description: $project_description"
-    echo ""
-    cat project_structure.txt
     echo ""
     cat sensitive_info.txt
     echo ""
