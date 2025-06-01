@@ -1,0 +1,12 @@
+# Sample PRD
+
+## Task 1: Implement user authentication
+- Create login page
+- Create registration page
+- Implement password reset functionality
+
+## Task 2: Implement task management features
+- Add task
+- List tasks
+- Update task
+- Remove task
