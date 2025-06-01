@@ -6,14 +6,20 @@ This tool is designed to be used within a coding project. The `new_repo` folder,
 
 ## Installation
 
-## What is a PRD File?
+Clone this repo to your projects folder and add coding_task_manager/ to .gitignore
 
-A PRD (Product Requirements Document) file is a document that describes the purpose, features, functionality, and behavior of a software product. It is used to communicate the requirements of the product to the development team.
+```
+git clone https://github.com/kadavilrahul/coding_task_manager.git
+```
+```
+cd coding_task_manager
+```
 
 ## Creating a PRD File
-
-A PRD (Product Requirements Document) file is a text-based document that you create to describe the features and functionality of your software. You can use any text editor to create a PRD file. The PRD file can be a plain text file (`.txt`), a Markdown file (`.md`), or a similar text-based format. The PRD file should follow the format described below.
-It can be located in any directory. However, you will need to provide the correct path to the prd_parser.py script when you run it.
+A PRD (Product Requirements Document) file is a text-based document that you create to describe the features and functionality of your software. 
+You can use any text editor to create a PRD file. The PRD file can be a plain text file (`.txt`), a Markdown file (`.md`), or a similar text-based format. 
+The PRD file should follow the format described below. It can be located in any directory. 
+However, you will need to provide the correct path to the prd_parser.py script when you run it.
 
 ## Sample PRD File Format
 
