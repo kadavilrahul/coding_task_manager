@@ -1,4 +1,4 @@
- Coding Task Manager
+# Coding Task Manager
 
 A comprehensive collection of task management tools designed to streamline software development workflows through intelligent automation, code analysis, and documentation generation. This repository contains multiple implementations ranging from simple Python scripts to sophisticated AI-powered systems.
 
