@@ -41,6 +41,8 @@ AI-powered Product Requirements Document generator using multi-agent workflow:
 apt install python3-pip python3.12-venv
 ```
 
+pip install google-genai
+
 ### Manual Setup
 1. **Install Python dependencies:**
    ```bash
