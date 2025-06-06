@@ -64,6 +64,10 @@ This repository contains five different versions, each designed for different us
 ### Basic Usage Example (Version 1)
 
 ```bash
+https://github.com/kadavilrahul/coding_task_manager.git
+```
+
+```bash
 # Navigate to the simple Python version
 cd version_01_py_simple/
 
