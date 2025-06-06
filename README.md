@@ -1,232 +1,111 @@
-# Coding Task Manager
+# PRD Generator
 
-A comprehensive collection of task management tools designed to streamline software development workflows through intelligent automation, code analysis, and documentation generation. This repository contains multiple implementations ranging from simple Python scripts to sophisticated AI-powered systems.
+A Python-based tool that leverages the Gemini API to generate comprehensive Product Requirements Documents (PRDs) for new or existing software projects.
 
-## 🚀 Overview
+## Features
 
-The Coding Task Manager provides developers with powerful tools to:
-- **Automate task creation** from Product Requirements Documents (PRDs)
-- **Analyze code complexity** and dependencies
-- **Generate comprehensive documentation** automatically
-- **Manage development workflows** efficiently
-- **Integrate AI assistance** for code analysis and modification
+*   **AI-Powered PRD Generation**: Creates detailed PRDs using the Gemini model.
+*   **Comprehensive PRD Sections**: Generates PRDs with sections like Executive Summary, Problem Statement, Functional Requirements, Technical Architecture, and more.
+*   **Project Analysis**: Scans existing project files to analyze languages and frameworks, providing context for PRD generation.
+*   **Flexible Project Types**: Supports PRD generation for both new projects and modifications to existing ones.
+*   **Automated PRD Saving**: Automatically saves generated PRDs to a Markdown file with a timestamp.
 
-## 📁 Repository Structure
+## Prerequisites/System Requirements
 
-This repository contains five different versions, each designed for different use cases and complexity levels:
+*   **Operating System**: Tested on Linux.
+*   **Python**: Python 3.8 or higher.
+*   **pip**: Python package installer.
+*   **Gemini API Key**: An active API key from Google Gemini.
 
-### 🐍 Python Implementations
+## Installation
 
-#### **Version 1: Simple Python Tools** (`version_01_py_simple/`)
-- **Best for**: Quick task management and PRD parsing
-- **Features**: Basic task CRUD operations, PRD parsing, complexity analysis
-- **Dependencies**: Python 3.x (no external libraries)
-- **Use case**: Small projects, learning, rapid prototyping
+Follow these steps to set up and install the PRD Generator:
 
-#### **Version 2: Sophisticated AI System** (`version_02_py_sophisticated/`)
-- **Best for**: Enterprise-level development workflows
-- **Features**: AI agents, AST analysis, automated code generation, comprehensive testing
-- **Dependencies**: Python 3.8+, OpenAI/Anthropic APIs, FastAPI, extensive ML stack
-- **Use case**: Large projects, team collaboration, production environments
+### 1. Create Virtual Environment
 
-### 🔧 Shell Script Implementations
-
-#### **Version 3: Comprehensive Shell Scripts** (`version_03_shellscript/`)
-- **Best for**: Unix/Linux environments, CI/CD integration
-- **Features**: Multi-language support, secure API handling, advanced file operations
-- **Dependencies**: Bash, jq, curl, tree
-- **Use case**: DevOps workflows, automated builds, cross-platform compatibility
-
-#### **Version 4: Simple Shell Script** (`version_04_shellscript_simple/`)
-- **Best for**: Quick project analysis
-- **Features**: Basic project information extraction
-- **Dependencies**: Bash
-- **Use case**: Rapid project assessment, minimal setup requirements
-
-### 📋 Specialized Tools
-
-#### **Version 5: PRD Generator** (`version_05_prd_generator/`)
-- **Best for**: Documentation-focused workflows
-- **Features**: AI-powered PRD generation, project analysis
-- **Dependencies**: Python 3.x, AI APIs
-- **Use case**: Product management, requirement documentation
-
-## 🎯 Quick Start Guide
-
-### Choose Your Version
-
-1. **For beginners or simple projects**: Start with `version_01_py_simple/`
-2. **For enterprise or complex projects**: Use `version_02_py_sophisticated/`
-3. **For shell/DevOps workflows**: Try `version_03_shellscript/`
-4. **For quick analysis**: Use `version_04_shellscript_simple/`
-5. **For documentation focus**: Use `version_05_prd_generator/`
-
-### Basic Usage Example (Version 1)
-
-#### Clone the repository
+It is highly recommended to use a virtual environment to manage project dependencies.
 
 ```bash
-git clone https://github.com/kadavilrahul/coding_task_manager.git
-```
-#### Move to appropriate folder 
+# Create virtual environment
+python3 -m venv venv
 
-```bash
-# Navigate to the simple Python version
-cd version_01_py_simple/
+# On macOS/Linux:
+source venv/bin/activate
 
-# Parse a PRD file to generate tasks
-python3 prd_parser.py sample_prd.txt
+# On Windows (Command Prompt):
+# venv\Scripts\activate.bat
 
-# Manage tasks
-python3 task_manager.py list
-python3 task_manager.py add --task_name "Implement user login"
-
-# Analyze task complexity
-python3 complexity_analyzer.py "Implement user login"
+# On Windows (PowerShell):
+# venv\Scripts\Activate.ps1
 ```
 
-### Advanced Usage Example (Version 2)
+### 2. Install Dependencies
+
+Install the required Python packages using pip:
 
 ```bash
-# Navigate to the sophisticated version
-cd version_02_py_sophisticated/
-
-# Install dependencies
 pip install -r requirements.txt
-
-# Run interactive mode
-python main.py --interactive
-
-# Generate PRD
-python main.py generate-prd "My Project" --description "Project description"
-
-# Analyze code
-python main.py analyze path/to/file.py --output analysis.json
 ```
 
-### Shell Script Example (Version 3)
+### 3. Configure Environment Variables
+
+Create a `.env` file in the root directory of the project and add your Gemini API key.
+
+```
+GEMINI_API_KEY='your_gemini_api_key_here'
+```
+
+Replace `'your_gemini_api_key_here'` with your actual Gemini API key.
+
+### 4. Install google-genai library
+
+This library is specifically required for `agno` to interact with the Gemini API.
 
 ```bash
-# Navigate to shell script version
-cd version_03_shellscript/
-
-# Analyze project
-./project_info.sh
-
-# Generate PRD using AI
-./generate_prd.sh --project "My Project" --description "Description"
-
-# Extract functions from code
-./extract_functions.sh --file src/main.py --language python
+pip install google-genai
 ```
 
-## 🛠 Installation
+### 5. Verify Installation
 
-### Prerequisites
-
-**For Python versions:**
-- Python 3.7+ (Version 1)
-- Python 3.8+ (Version 2)
-- pip package manager
-
-**For Shell script versions:**
-- Bash shell
-- Standard Unix tools (jq, curl, tree for Version 3)
-
-**For AI features:**
-- Gemini API key
-- Internet connection
-
-### Quick Setup
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/kadavilrahul/coding_task_manager.git
-   cd coding_task_manager
-   ```
-
-2. **Choose and navigate to your preferred version:**
-   ```bash
-   cd version_01_py_simple/  # or your chosen version
-   ```
-
-3. **Follow the specific installation instructions** in each version's README.md
-
-## 📚 Documentation
-
-Each version contains its own detailed documentation:
-
-- `version_01_py_simple/README.md` - Simple Python tools guide
-- `version_02_py_sophisticated/README.md` - Comprehensive AI system documentation
-- `version_03_shellscript/README.md` - Shell script tools guide
-- `version_04_shellscript_simple/README.md` - Simple shell script usage
-- `version_05_prd_generator/README.md` - PRD generator documentation
-- `version_06_prd_generator/README.md` - Simple PRD generator, README prompt
-
-## 🔧 Configuration
-
-### Environment Variables
-
-For AI-powered features, set up your API keys:
+After completing the steps above, you can verify your installation by running the main script. If it starts and prompts for input, the installation was successful.
 
 ```bash
-# For OpenAI (GPT models)
-export OPENAI_API_KEY="your-openai-api-key"
-
-# For Anthropic (Claude models)
-export ANTHROPIC_API_KEY="your-anthropic-api-key"
-
-# For Google (Gemini models)
-export GEMINI_API_KEY="your-gemini-api-key"
+python prd_generator.py
 ```
 
-### Project Configuration
+## Usage
 
-Most versions support configuration files for customizing behavior:
-- `.task-config.json` - Project-specific settings
-- `.ai-context.json` - AI context and preferences
-- `config.json` - Application configuration
+To generate a PRD, run the `prd_generator.py` script from your terminal:
 
-## 🤝 Contributing
+```bash
+python prd_generator.py
+```
 
-We welcome contributions! Here's how you can help:
+The script will guide you through the following prompts:
 
-1. **Fork the repository**
-2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
-3. **Make your changes** and test thoroughly
-4. **Commit your changes**: `git commit -m 'Add amazing feature'`
-5. **Push to the branch**: `git push origin feature/amazing-feature`
-6. **Open a Pull Request**
+1.  **Choose project type**:
+    *   Enter `1` for a new project.
+    *   Enter `2` for an existing project that needs modifications or enhancements. (If you choose 2, the tool will scan your current project files for context.)
+2.  **Enter your product idea**: Provide a concise description of your product idea (e.g., "I want to simplify the project and use Gulp to generate html pages from csv files").
 
-### Development Guidelines
+After you provide the product idea, the tool will generate a PRD and save it as a Markdown file (e.g., `PRD_product_DD-MM-YYYY_HHMMSS.md`) in the current directory.
 
-- Follow the existing code style in each version
-- Add tests for new features
-- Update documentation as needed
-- Ensure backward compatibility when possible
+## File Organization
 
-## 📄 License
+*   [`prd_generator.py`](prd_generator.py): The main Python script for generating PRDs.
+*   [`requirements.txt`](requirements.txt): Lists all Python dependencies required for the project.
+*   [`INSTALLATION.md`](INSTALLATION.md): Provides detailed installation instructions.
+*   [`PROMPT.md`](PROMPT.md): Defines the structure and style requirements for the `README.md` file.
+*   [`.env`](.env): Configuration file for environment variables, specifically for the Gemini API key.
+*   [`.gitignore`](.gitignore): Specifies intentionally untracked files to ignore by Git.
+*   [`project_info.sh`](project_info.sh): A shell script that likely gathers project information.
+*   [`project_info.txt`](project_info.txt): A text file that likely stores project information.
 
-This project is licensed under the MIT License - see the individual LICENSE files in each version directory for details.
+## Troubleshooting
 
-## 🆘 Support
-
-- **Issues**: Report bugs or request features via [GitHub Issues](https://github.com/kadavilrahul/coding_task_manager/issues)
-- **Documentation**: Check the README.md in each version directory
-- **Examples**: See the sample files included in each version
-
-
-## 🚀 Roadmap
-
-- [ ] Web-based interface for task management
-- [ ] Integration with popular IDEs (VS Code, IntelliJ)
-- [ ] Support for more programming languages
-- [ ] Enhanced AI model integration
-- [ ] Real-time collaboration features
-- [ ] Mobile application
-- [ ] Docker containerization
-- [ ] Kubernetes deployment templates
-
----
-
-**Made with ❤️ for developers who want to focus on coding, not task management.**
+*   **`ValueError: Missing GEMINI_API_KEY environment variable`**:
+    *   **Solution**: Ensure you have created a `.env` file in the root directory and added your `GEMINI_API_KEY` as described in the "Configure Environment Variables" section. Double-check for typos in the key name or value.
+*   **`ModuleNotFoundError`**:
+    *   **Solution**: Make sure you have activated your virtual environment (`source venv/bin/activate` on Linux/macOS or `venv\Scripts\activate.bat` on Windows) and installed all dependencies using `pip install -r requirements.txt`.
+*   **`agno` or `google-genai` related errors**:
+    *   **Solution**: Verify that `pip install google-genai` was run successfully. Sometimes, specific versions might cause conflicts; ensure your `requirements.txt` is up-to-date or try reinstalling these specific packages.

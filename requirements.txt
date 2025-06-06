@@ -1,0 +1,5 @@
+# Required packages for PRD Generator
+agno
+google-generativeai
+google-genai
+python-dotenv

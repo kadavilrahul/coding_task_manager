@@ -1,0 +1,104 @@
+=== PROJECT INFORMATION ===
+Generated on: Fri Jun  6 10:05:49 AM UTC 2025
+
+=== Project Structure ===
+.
+├── add_timestamps.sh
+├── apache_postgres.sh
+├── check_data.sh
+├── clean_excel.txt
+├── convert.sh
+├── count_public_files.sh
+├── create_database.sh
+├── cut_first_100.sh
+├── exclude_static_folders.md
+├── fix_csv.sh
+├── .gitignore
+├── import_csv.sh
+├── import_first_100.sh
+├── install_pgadmin.sh
+├── maindomain.sh
+├── packages.sh
+├── products.csv
+├── project_info.sh
+├── project_structure.txt
+├── README.md
+├── search.php
+├── setup.sh
+├── split_sitemap.py
+├── subdomain.sh
+├── transfer.sh
+└── update_apache_config.sh
+
+1 directory, 26 files
+
+=== Sensitive Information Scan ===
+./cut_first_100.sh:DB_PASSWORD="products_2@"
+./cut_first_100.sh:# Set PGPASSWORD environment variable
+./cut_first_100.sh:export PGPASSWORD="$DB_PASSWORD"
+./cut_first_100.sh:# Unset PGPASSWORD for security
+./cut_first_100.sh:unset PGPASSWORD
+./check_data.sh:DB_PASSWORD="products_2@"
+./check_data.sh:# Export password for psql
+./check_data.sh:export PGPASSWORD="$DB_PASSWORD"
+./check_data.sh:unset PGPASSWORD
+./create_database.sh:    local db_password="$(sanitize_db_name $domain)_2@"
+./create_database.sh:    echo "Password: $db_password" >> /etc/website_db_credentials.conf
+./create_database.sh:    CREATE USER $db_user WITH PASSWORD '$db_password';
+./search.php:    'password' => 'your_password' // Update with your Postgres DB password
+./search.php:    'password' => 'your_password',  // Update with your WordPress DB password
+./search.php:                "host=%s port=%s dbname=%s user=%s password=%s",
+./search.php:                $pg_config['password']
+./search.php:                $wp_config['password'],
+./packages.sh:sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '$(openssl rand -base64 12)';"
+./apache_postgres.sh:su - postgres -c "psql -c \"ALTER USER postgres WITH PASSWORD 'Karimpadam2@';\""
+./apache_postgres.sh:echo "PostgreSQL postgres user password is set to: Karimpadam2@"
+./install_pgadmin.sh:expect "Password: "
+./install_pgadmin.sh:expect "Retype password: "
+./install_pgadmin.sh:   - Password: products_2@
+./install_pgadmin.sh:- Password: products_2@
+./project_info.sh:         -E "(API_KEY|SECRET|PASSWORD|TOKEN|DATABASE_URL)" "$directory" 2>/dev/null; then
+./import_csv.sh:    local db_password=""
+./import_csv.sh:            elif [[ $line == "Password:"* ]]; then
+./import_csv.sh:                db_password=$(echo $line | cut -d' ' -f2)
+./import_csv.sh:    if [ -z "$db_user" ] || [ -z "$db_password" ]; then
+./import_csv.sh:    echo "DB_PASSWORD=$db_password"
+./import_csv.sh:# Set PGPASSWORD environment variable
+./import_csv.sh:export PGPASSWORD="$DB_PASSWORD"
+./import_csv.sh:# Unset PGPASSWORD for security
+./import_csv.sh:unset PGPASSWORD
+./README.md:Needed only if you want to login from another machine securely without password.
+./README.md:Use database password when asked
+./import_first_100.sh:DB_PASSWORD="products_2@"
+./import_first_100.sh:# Set PGPASSWORD environment variable
+./import_first_100.sh:export PGPASSWORD="$DB_PASSWORD"
+./import_first_100.sh:# Unset PGPASSWORD for security
+./import_first_100.sh:unset PGPASSWORD
+
+⚠️  WARNING: Potential sensitive information found above!
+
+=== Line Counts ===
+84 ./subdomain.sh
+164 ./cut_first_100.sh
+24 ./check_data.sh
+115 ./create_database.sh
+22 ./transfer.sh
+1079 ./setup.sh
+8 ./add_timestamps.sh
+612 ./search.php
+67 ./maindomain.sh
+148 ./split_sitemap.py
+78 ./packages.sh
+100 ./fix_csv.sh
+44 ./count_public_files.sh
+57 ./apache_postgres.sh
+65 ./install_pgadmin.sh
+197 ./project_info.sh
+138 ./import_csv.sh
+96 ./convert.sh
+77 ./import_first_100.sh
+75 ./update_apache_config.sh
+
+📊 Summary:
+Total files: 20
+Total lines: 3250
