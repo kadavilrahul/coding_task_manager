@@ -1,6 +1,6 @@
-# PRD Generator
+# Coding Task Manager
 
-A Python-based tool that leverages the Gemini API to generate comprehensive Product Requirements Documents (PRDs) for new or existing software projects.
+A Python-based tool that leverages the Gemini API to generate documents and manage tasks for new or existing software projects.
 
 ## Features
 
