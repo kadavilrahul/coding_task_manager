@@ -63,9 +63,12 @@ This repository contains five different versions, each designed for different us
 
 ### Basic Usage Example (Version 1)
 
+#### Clone the repository
+
 ```bash
-https://github.com/kadavilrahul/coding_task_manager.git
+git clone https://github.com/kadavilrahul/coding_task_manager.git
 ```
+#### Move to appropriate folder 
 
 ```bash
 # Navigate to the simple Python version
