@@ -161,6 +161,7 @@ Each version contains its own detailed documentation:
 - `version_03_shellscript/README.md` - Shell script tools guide
 - `version_04_shellscript_simple/README.md` - Simple shell script usage
 - `version_05_prd_generator/README.md` - PRD generator documentation
+- `version_06_prd_generator/README.md` - Simple PRD generator, README prompt
 
 ## 🔧 Configuration
 
@@ -214,17 +215,6 @@ This project is licensed under the MIT License - see the individual LICENSE file
 - **Documentation**: Check the README.md in each version directory
 - **Examples**: See the sample files included in each version
 
-## 🔄 Version Comparison
-
-| Feature | V1 Simple | V2 Sophisticated | V3 Shell | V4 Simple Shell | V5 PRD Gen |
-|---------|-----------|------------------|----------|-----------------|------------|
-| Task Management | ✅ Basic | ✅ Advanced | ❌ | ❌ | ❌ |
-| PRD Parsing | ✅ | ✅ | ✅ | ❌ | ✅ |
-| AI Integration | ❌ | ✅ Full | ✅ API | ❌ | ✅ Limited |
-| Code Analysis | ✅ Basic | ✅ AST-based | ✅ Multi-lang | ✅ Basic | ✅ Basic |
-| Dependencies | None | Heavy | Light | None | Light |
-| Complexity | Low | High | Medium | Very Low | Low |
-| Best For | Learning | Production | DevOps | Quick Analysis | Documentation |
 
 ## 🚀 Roadmap
 
