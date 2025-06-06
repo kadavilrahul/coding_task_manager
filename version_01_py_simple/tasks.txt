@@ -1,8 +1,0 @@
-4418a06b-69bc-4628-9a7b-f78574963181 | Task 1: Implement user authentication
-  bc121e33-80bc-4c68-8344-e43ff1dff763 | Create login page
-  a7468718-a42e-4808-9bb0-f1ac09bb9c0c | Create registration page
-  90e8cd1c-e42e-400f-8971-607b8216b701 | Implement password reset functionality
-51f71f52-33c0-4d3b-b784-aed3fd72db7a | Task 2: Implement task management features
-  61b3e1e9-f523-424b-854c-a5af3e754730 | Add task
-  880b149a-c806-4551-baa2-66b6bd87f887 | List tasks
-  7b6a4c3e-c839-4635-9d99-4cb152957c4f | Update task
