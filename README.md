@@ -21,6 +21,15 @@ A Python-based tool that leverages the Gemini API to generate documents and mana
 
 Follow these steps to set up and install the PRD Generator:
 
+### Clone the Script
+Clone the repository or download the script manually:
+```
+git clone https://github.com/kadavilrahul/woocommerce_import_data.git
+```
+```
+cd woocommerce_import_data
+```
+
 ### 1. Create Virtual Environment
 
 It is highly recommended to use a virtual environment to manage project dependencies.
