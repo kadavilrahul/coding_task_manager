@@ -6,22 +6,23 @@ The README must be practical, precise, and include working installation commands
 1. **Title**: Single line with project name
 2. **One-line description**: Clear, concise explanation of what the project does
 3. **Features section**: Bullet points highlighting key capabilities
-4. **Prerequisites/System Requirements**: Specific OS versions, dependencies, and system requirements
-5. **Installation section**: Step-by-step commands that actually work
-6. **Usage section**: Clear examples with actual commands
-7. **File organization**: Brief description of main files
-8. **Troubleshooting**: Common issues and solutions
-9. **Additional sections as needed**: Configuration, contributing, license
+4. **Installation section**: This section combines installation and usage. It should include:
+    - **Prerequisites/System Requirements**: Specific OS versions, dependencies, and system requirements.
+    - **Installation Steps**: Step-by-step commands that actually work, using serial numbers and proper bash code blocks.
+    - **Usage Examples if any**: Clear examples with actual commands, using serial numbers and proper bash code blocks.
+5. **File organization**: Brief description of main files
+6. **Troubleshooting**: Common issues and solutions
+7. **Additional sections as needed**: Configuration, contributing, license
 
 ## STYLE REQUIREMENTS:
 
-**Installation Commands:**
-- Provide complete, copy-pastable commands
-- Include all necessary steps (no assumptions)
-- Use proper bash code blocks with ```bash
-- Test commands work on specified OS versions
-- Include setup scripts when beneficial
-- Provide alternative installation methods when applicable
+**Code Blocks:**
+- Use proper bash code blocks with ```bash for all commands.
+- Provide complete, copy-pastable commands.
+- Include all necessary steps (no assumptions).
+- Test commands work on specified OS versions.
+- Include setup scripts when beneficial.
+- Provide alternative installation methods when applicable.
 
 **Descriptions:**
 - Keep descriptions practical and focused
@@ -36,15 +37,15 @@ The README must be practical, precise, and include working installation commands
 - Include error handling and troubleshooting steps
 
 **Prerequisites:**
-- List exact package names for installation
-- Include version requirements
-- Specify OS compatibility clearly
-- Mention any GUI or special requirements
+- List exact package names for installation.
+- Include version requirements.
+- Specify OS compatibility clearly.
+- Mention any GUI or special requirements.
 
 ## MANDATORY ELEMENTS:
 
-1. **Working Installation**: Every command must be tested and functional
-2. **No Missing Steps**: Include environment setup, dependency installation, configuration
+1. **Working Getting Started Section**: Every command must be tested and functional, covering both installation and initial usage.
+2. **No Missing Steps**: Include environment setup, dependency installation, configuration, and initial usage commands.
 3. **Error Prevention**: Address common installation issues proactively
 4. **Multiple OS Support**: Provide instructions for different systems when applicable
 5. **Verification Steps**: Include commands to verify successful installation
