@@ -5,7 +5,7 @@ A Python-based tool that leverages the Gemini API to generate Product Requiremen
 ## Features
 
 *   **AI-Powered PRD Generation**: Creates detailed Product Requirements Documents (PRDs) using the Gemini model, with sections like Executive Summary, Problem Statement, Functional Requirements, and Technical Architecture. It can analyze existing project files for context.
-*   **Standard Operating Procedure (SOP) for AI Development**: Provides a comprehensive JSON-based SOP (`ai_development_sop.json`) to guide AI behavior in code generation, review, testing, and documentation within VS Code, designed for automated use by AI code editor extensions.
+*   **Standard Operating Procedure (SOP) for AI Development**: Provides a comprehensive JSON-based SOP (`generate_code_using_sop.json`) to guide AI behavior in code generation, review, testing, and documentation within VS Code, designed for automated use by AI code editor extensions.
 *   **Prompt for Run Script Generation**: Includes a JSON prompt (`generate_run_script.json`) to guide AI in generating `run.sh` scripts for various codebases, automating environment setup and execution.
 *   **Project Information Generation**: Gathers and summarizes project structure, sensitive information, and line counts.
 
@@ -79,10 +79,10 @@ This repository provides tools and documentation to facilitate AI-assisted softw
 
 ### 1. Generate Project Information
 
-To gather project information (structure, line counts, etc.), run the `project_info.sh` script:
+To gather project information (structure, line counts, etc.), run the `generate_project_info.sh` script:
 
 ```bash
-bash project_info.sh
+bash generate_project_info.sh
 ```
 
 ### 2. Generate a Product Requirements Document (PRD)
@@ -98,7 +98,7 @@ The script will prompt you to choose a project type (new or existing) and enter 
 
 This project is designed to work seamlessly with AI code editor extensions in VS Code. The AI's behavior and operational guidelines are defined in `ai_development_sop.json`.
 
-*   **`ai_development_sop.json`**: This JSON file contains the comprehensive Standard Operating Procedure for the AI. It defines the AI's persona, prompt templates for various tasks (code generation, review, testing, debugging, documentation), and operational guidelines. AI code editor extensions should use this file to guide the AI's actions without requiring direct user input for prompt construction.
+*   **`generate_code_using_sop.json`**: This JSON file contains the comprehensive Standard Operating Procedure for the AI. It defines the AI's persona, prompt templates for various tasks (code generation, review, testing, debugging, documentation), and operational guidelines. AI code editor extensions should use this file to guide the AI's actions without requiring direct user input for prompt construction.
     *   **Key References**: This SOP refers to the generated PRD (e.g., `PRD_[timestamp].md`), `project_info.txt`, and files within the `/reference` folder for context.
 
 *   **`generate_run_script.json`**: This JSON file provides a prompt template specifically for generating `run.sh` scripts. AI code editor extensions can use this to instruct the AI to create executable shell scripts for setting up environments, installing dependencies, and running codebases.
@@ -122,11 +122,11 @@ This project is designed to work seamlessly with AI code editor extensions in VS
 *   [`generate_prd.py`](generate_prd.py): The main Python script for generating PRDs.
 *   [`requirements.txt`](requirements.txt): Lists all Python dependencies required for the project.
 *   [`generate_readme.md`](generate_readme.md): Defines the structure and style requirements for the `README.md` file.
-*   [`ai_development_sop.json`](ai_development_sop.json): A comprehensive JSON file defining the AI's persona, prompt templates, and operational guidelines for AI-assisted software development.
+*   [`generate_code_using_sop.json`](generate_code_using_sop.json): A comprehensive JSON file defining the AI's persona, prompt templates, and operational guidelines for AI-assisted software development.
 *   [`generate_run_script.json`](generate_run_script.json): A JSON prompt template for guiding AI in generating `run.sh` scripts for various codebases.
 *   [`.env`](.env): Configuration file for environment variables, specifically for the Gemini API key.
 *   [`.gitignore`](.gitignore): Specifies intentionally untracked files to ignore by Git.
-*   [`project_info.sh`](project_info.sh): A shell script that gathers project information.
+*   [`generate_project_info.sh`](generate_project_info.sh): A shell script that gathers project information.
 
 
 ## Troubleshooting
