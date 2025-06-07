@@ -24,10 +24,10 @@ Follow these steps to set up and install the PRD Generator:
 ### Clone the Script
 Clone the repository or download the script manually:
 ```
-git clone https://github.com/kadavilrahul/woocommerce_import_data.git
+git clone https://github.com/kadavilrahul/coding_task_manager.git
 ```
 ```
-cd woocommerce_import_data
+cd coding_task_manager
 ```
 
 ### 1. Create Virtual Environment
