@@ -1,3 +1,20 @@
+## MCP Setup and Test Instructions (for Cline)
+
+This document provides instructions for creating and using MCP servers with Cline.
+
+### 1. Creating an MCP Server
+
+To create a new MCP server, click MCP Servers icon as shown in image
+![alt text](image.png)
+
+Once you have created and started your MCP server, Cline can connect to it and use the tools and resources it provides.
+
+### 2. Using MCP Servers with Cline
+
+After connecting an MCP server, you can use its tools via chat interface as it will automatricall be asble use the tool
+
+---
+
 ## MCP Setup and Test Instructions (for GitHub Copilot in VS Code)
 
 This document provides step-by-step instructions for configuring and successfully testing Hugging Face MCP integration in VS Code, specifically for use with GitHub Copilot (Agent mode).
@@ -49,3 +66,5 @@ This document provides step-by-step instructions for configuring and successfull
 *   Only local/code analysis tasks are supported by default. For more tools, check Copilot or MCP server documentation.
 
 **Note**: This setup is tested and works with GitHub Copilot Agent mode. For other extensions, configuration or tool support may differ.
+
+
