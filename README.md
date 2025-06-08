@@ -44,6 +44,7 @@ This repository provides tools and documentation to facilitate AI-assisted softw
     python 00_generate_prd.py
     ```
 8.  **AI-Assisted Code Development**: This is designed to work with AI code editor extensions using [`00_generate_code_using_sop.json`](00_generate_code_using_sop.json) and [`00_generate_run_script.json`](00_generate_run_script.json).
+9.  **MCP Integration for GitHub Copilot**: Follow the instructions in [`00_generate_mcp_for_copilot.md`](00_generate_mcp_for_copilot.md) to set up and test Hugging Face MCP integration with GitHub Copilot.
 
 ## Features
 
@@ -52,6 +53,7 @@ This repository provides tools and documentation to facilitate AI-assisted softw
 *   **Prompt for Run Script Generation**: Includes a JSON prompt (`00_generate_run_script.json`) to guide AI in generating `run.sh` scripts.
 *   **Project Information Generation**: Gathers and summarizes project structure, sensitive information, and line counts.
 *   **Workflow with AI Code Editor Extensions**: Designed for seamless integration with AI code editor extensions in VS Code, leveraging PRDs and SOPs for contextual awareness and task execution.
+*   **MCP Integration for GitHub Copilot**: Provides instructions for setting up and testing Hugging Face MCP integration specifically for GitHub Copilot (Agent mode).
 
 ## File Organization
 
@@ -61,6 +63,7 @@ This repository provides tools and documentation to facilitate AI-assisted softw
 *   [`00_generate_run_script.json`](00_generate_run_script.json): Prompt for `run.sh` script generation.
 *   [`.env`](.env): Environment variables (Gemini API key).
 *   [`00_generate_project_info.sh`](00_generate_project_info.sh): Script to gather project information.
+*   [`00_generate_mcp_for_copilot.md`](00_generate_mcp_for_copilot.md): Instructions for MCP setup and testing with GitHub Copilot.
 
 ## Troubleshooting
 
