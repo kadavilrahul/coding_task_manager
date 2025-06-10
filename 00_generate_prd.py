@@ -1,5 +1,6 @@
 from agno.agent import Agent
 from agno.models.google.gemini import Gemini
+from agno.models.anthropic.claude import Claude # Import Claude
 import os
 from dotenv import load_dotenv
 from datetime import datetime
@@ -11,16 +12,40 @@ load_dotenv()
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
 
 if not GEMINI_API_KEY:
-    raise ValueError("Missing GEMINI_API_KEY environment variable")
+    # Check for Claude API key if Gemini is not set
+    CLAUDE_API_KEY = os.getenv('ANTHROPIC_API_KEY')
+    if not CLAUDE_API_KEY:
+        raise ValueError("Missing GEMINI_API_KEY or ANTHROPIC_API_KEY environment variable")
+    # If Claude key exists, we'll handle model initialization based on choice
+    GEMINI_API_KEY = None # Ensure Gemini key is None if not found
 
 class PRDGenerator:
-    def __init__(self):
-        """Initialize the PRD Generator with Gemini model"""
-        self.model = Gemini(
-            id="gemini-2.0-flash-exp",
-            api_key=GEMINI_API_KEY
-        )
-        
+    def __init__(self, llm_choice):
+        """Initialize the PRD Generator with the chosen LLM model"""
+        self.model = None
+        if llm_choice == '1':
+            if not GEMINI_API_KEY:
+                 raise ValueError("GEMINI_API_KEY is required for Gemini models")
+            self.model = Gemini(id="gemini-2.0-flash-exp", api_key=GEMINI_API_KEY)
+        elif llm_choice == '2':
+            if not GEMINI_API_KEY:
+                 raise ValueError("GEMINI_API_KEY is required for Gemini models")
+            self.model = Gemini(id="gemini-2.5-flash-preview-05-20", api_key=GEMINI_API_KEY)
+        elif llm_choice == '3':
+            if not GEMINI_API_KEY:
+                 raise ValueError("GEMINI_API_KEY is required for Gemini models")
+            self.model = Gemini(id="gemini-2.5-pro-preview-06-05", api_key=GEMINI_API_KEY)
+        elif llm_choice == '4':
+            CLAUDE_API_KEY = os.getenv('ANTHROPIC_API_KEY')
+            if not CLAUDE_API_KEY:
+                 raise ValueError("ANTHROPIC_API_KEY is required for Claude models")
+            self.model = Claude(id="claude-sonnet-4-20250514", api_key=CLAUDE_API_KEY)
+        else:
+            raise ValueError("Invalid LLM choice")
+
+        if not self.model:
+             raise ValueError("Failed to initialize LLM model")
+
         self.prd_agent = Agent(
             name="PRD Generator",
             role="Product Requirements Document Generator",
@@ -151,17 +176,25 @@ Create a comprehensive PRD based on the above context.
 
 def main():
     """Main function for the simplified PRD generator"""
-    generator = PRDGenerator()
-    
     print("="*60)
     print("🚀 PRD GENERATOR")
     print("="*60)
-    
+
     print("\nChoose project type:")
     print("1. New Project")
     print("2. Existing Project to be modified")
     project_status_choice = input("Enter your choice (1/2): ").strip()
     is_new_project = (project_status_choice == '1')
+
+    print("\nChoose LLM model:")
+    print("1. Gemini (gemini-2.0-flash-exp)")
+    print("2. Gemini (gemini-2.5-flash-preview-05-20)")
+    print("3. Gemini (gemini-2.5-pro-preview-06-05)")
+    print("4. Claude (claude-sonnet-4-20250514)")
+    llm_choice = input("Enter your choice (1/2/3/4): ").strip()
+
+    # Initialize generator with chosen LLM
+    generator = PRDGenerator(llm_choice=llm_choice)
 
     project_analysis = None
     if not is_new_project:
