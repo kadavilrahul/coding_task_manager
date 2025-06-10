@@ -5,11 +5,11 @@ The README must be practical, precise, and include working installation commands
 
 1. **Title**: Single line with project name
 2. **One-line description**: Clear, concise explanation of what the project does
-3. **Features section**: Bullet points highlighting key capabilities
-4. **Installation section**: This section combines installation and usage. It should include:
+3. **Installation section**: This section combines installation and usage. It should include:
     - **Prerequisites/System Requirements**: Specific OS versions, dependencies, and system requirements.
     - **Installation Steps**: Step-by-step commands that actually work, using serial numbers and proper bash code blocks.
     - **Usage Examples if any**: Clear examples with actual commands, using serial numbers and proper bash code blocks.
+4. **Features section**: Bullet points highlighting key capabilities
 5. **File organization**: Brief description of main files
 6. **Troubleshooting**: Common issues and solutions
 7. **Additional sections as needed**: Configuration, contributing, license
