@@ -3,5 +3,5 @@
 
 sudo apt-get install cloc
 
-echo "cloc /path/to/folder"
+echo "Run this command on terminal cloc /path/to/folder"
 echo "It gives a detailed breakdown by language and total lines"
