@@ -11,7 +11,6 @@ This repository provides tools and documentation to facilitate AI-assisted softw
 
     ```bash
     git clone https://github.com/kadavilrahul/coding_task_manager.git
-    cd coding_task_manager
     ```
 
     ```bash
