@@ -12,18 +12,21 @@ The Coding Task Manager consists of three main components:
 
 ## 📋 Table of Contents
 
-- [Features](#features)
-- [Quick Start](#quick-start)
-- [Script Collections](#script-collections)
+- [✨ Features](#-features)
+- [🚀 Quick Start](#-quick-start)
+- [📁 Script Collections](#-script-collections)
   - [Scripts 01: AI-Powered Development Tools](#scripts-01-ai-powered-development-tools)
   - [Scripts 02: Basic Coding Assistant](#scripts-02-basic-coding-assistant)
   - [Scripts 03: Advanced Coding Assistant](#scripts-03-advanced-coding-assistant)
-- [Installation](#installation)
-- [Usage Examples](#usage-examples)
-- [Configuration](#configuration)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
+- [💻 Installation](#-installation)
+- [📚 Usage Examples](#-usage-examples)
+- [⚙️ Configuration](#️-configuration)
+- [🔧 Troubleshooting](#-troubleshooting)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
+- [📊 Project Statistics](#-project-statistics)
+- [🔗 Related Projects](#-related-projects)
+- [🚦 Status](#-status)
 
 ## ✨ Features
 
