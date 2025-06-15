@@ -26,3 +26,7 @@ This repository provides tools and documentation to facilitate AI-assisted softw
     ```bash
     cd scripts_02
     ```
+
+    ```bash
+    cd scripts_03
+    ```
