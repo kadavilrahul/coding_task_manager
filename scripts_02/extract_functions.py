@@ -21,6 +21,6 @@ def process_directory(directory):
 
 if __name__ == "__main__":
     functions = process_directory(".")
-    with open("functions.txt", "w") as f:
+    with open(os.path.join(os.path.dirname(__file__), "functions.txt"), "w") as f:
         for func in functions:
             f.write(func + "\n")

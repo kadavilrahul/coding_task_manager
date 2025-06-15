@@ -9,7 +9,7 @@ read -p "Enter your choice (1-3): " choice
 
 # Function to use grep
 grep_functions() {
-  grep -r "^def " . > functions.txt
+  grep -r "^def " . > ./functions.txt
   echo "Function names collected using grep and saved to functions.txt"
 }
 
@@ -25,7 +25,7 @@ ctags_functions() {
     echo "ctags is already installed."
   fi
   ctags -R .
-  grep "^[a-zA-Z0-9_]*$" tags | awk '{print $5, $1}' > functions.txt
+  grep "^[a-zA-Z0-9_]*$" tags | awk '{print $5, $1}' > ./functions.txt
   echo "Function names collected using ctags and saved to functions.txt"
 }
 
@@ -38,7 +38,7 @@ case $choice in
     ctags_functions
     ;;
   3)
-    python version_02/extract_functions.py
+    python extract_functions.py
     echo "Function names collected using ast (Python) and saved to functions.txt"
     ;;
   *)

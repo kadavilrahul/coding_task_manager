@@ -12,4 +12,4 @@ fi
 
 # Run cloc on the current directory
 echo "Running cloc on the current directory..."
-cloc .
+cloc . --report-file --out=./cloc_report.txt
