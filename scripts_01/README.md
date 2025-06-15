@@ -1,29 +1,31 @@
+# AI-Powered Scripting Tools
 
+This project provides a suite of AI-powered scripting tools for automating various development tasks, including PRD generation, code generation, and MCP integration.
 
-3.  **Set up Virtual Environment**:
+1.  **Set up Virtual Environment**:
     ```bash
     python3 -m venv venv
     source venv/bin/activate  # On Linux/macOS
     ```
-4.  **Install Dependencies**:
+2.  **Install Dependencies**:
     ```bash
     pip install -r requirements.txt
     pip install google-genai
     ```
-5.  **Configure API Key**: Create a `.env` file in the root directory with your Gemini API key:
+3.  **Configure API Key**: Create a `.env` file in the root directory with your Gemini API key:
     ```
     GEMINI_API_KEY='your_gemini_api_key_here'
     ```
-6.  **Generate Project Information**: Run:
+4.  **Generate Project Information**: Run:
     ```bash
     bash 00_generate_project_info.sh
     ```
-7.  **Generate a Product Requirements Document (PRD)**: Run:
+5.  **Generate a Product Requirements Document (PRD)**: Run:
     ```bash
     python 00_generate_prd.py
     ```
-8.  **AI-Assisted Code Development**: This is designed to work with AI code editor extensions using [`00_generate_code_using_sop.json`](00_generate_code_using_sop.json) and [`00_generate_run_script.json`](00_generate_run_script.json).
-9.  **MCP Integration for GitHub Copilot**: Follow the instructions in [`00_generate_mcp.md`](00_generate_mcp.md) to set up and test Hugging Face MCP integration with GitHub Copilot.
+6.  **AI-Assisted Code Development**: This is designed to work with AI code editor extensions using [`00_generate_code_using_sop.json`](00_generate_code_using_sop.json) and [`00_generate_run_script.json`](00_generate_run_script.json).
+7.  **MCP Integration for GitHub Copilot**: Follow the instructions in [`00_generate_mcp.md`](00_generate_mcp.md) to set up and test Hugging Face MCP integration with GitHub Copilot.
 
 ## Features
 
