@@ -53,6 +53,8 @@ The Coding Task Manager consists of three main components:
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/kadavilrahul/coding_task_manager.git
+   ```
+   ```bash
    cd coding_task_manager
    ```
 
