@@ -1,14 +1,15 @@
 # Coding Task Manager
 
-A comprehensive suite of AI-powered development tools that provides structured workflows for software development, code analysis, and project management. This toolkit includes three specialized script collections for different aspects of development assistance.
+A comprehensive suite of AI-powered development tools that provides structured workflows for software development, code analysis, and project management. This toolkit includes four specialized script collections for different aspects of development assistance.
 
 ## 🚀 Overview
 
-The Coding Task Manager consists of three main components:
+The Coding Task Manager consists of four main components:
 
 - **Scripts 01**: AI-powered PRD generation and development SOPs
 - **Scripts 02**: Basic coding assistant with function extraction tools  
 - **Scripts 03**: Advanced coding assistant with comprehensive analysis and reporting
+- **Scripts 04**: File versioning system with real-time backup monitoring
 
 ## 📋 Table of Contents
 
@@ -18,6 +19,7 @@ The Coding Task Manager consists of three main components:
   - [Scripts 01: AI-Powered Development Tools](#scripts-01-ai-powered-development-tools)
   - [Scripts 02: Basic Coding Assistant](#scripts-02-basic-coding-assistant)
   - [Scripts 03: Advanced Coding Assistant](#scripts-03-advanced-coding-assistant)
+  - [Scripts 04: File Versioning System](#scripts-04-file-versioning-system)
 - [💻 Installation](#-installation)
 - [📚 Usage Examples](#-usage-examples)
 - [⚙️ Configuration](#️-configuration)
@@ -48,6 +50,12 @@ The Coding Task Manager consists of three main components:
 - **Git Statistics**: Repository metrics and contributor analysis
 - **Comprehensive Reporting**: Markdown reports with timestamped outputs
 
+### 🔄 File Management & Backup
+- **Real-time Monitoring**: Automatic file change detection with inotify
+- **Timestamped Backups**: Automatic backup creation on file modifications
+- **Smart Filtering**: Configurable ignore patterns for selective monitoring
+- **Background Operation**: Non-intrusive process management with PID tracking
+
 ## 🚀 Quick Start
 
 1. **Clone the repository**:
@@ -68,6 +76,9 @@ The Coding Task Manager consists of three main components:
    
    # For advanced analysis tools
    cd scripts_03
+   
+   # For file versioning and backup
+   cd scripts_04
    ```
 
 3. **Follow the specific setup instructions** for your chosen collection below.
@@ -186,12 +197,72 @@ cd scripts_03
 ./coding_assistant_tools.sh lint-sh
 ```
 
+---
+
+### Scripts 04: File Versioning System
+
+**Purpose**: Lightweight file versioning system with real-time monitoring and automatic backup creation using Linux inotify.
+
+#### 🛠️ Tools Included
+- `file_versioning.sh` - Main monitoring script with inotify integration
+- `check_versioning.sh` - Status checker and process management
+- `setup_file_versioning.sh` - Automated setup and configuration
+
+#### 📦 Features
+- **Real-time Monitoring**: Uses Linux inotify for instant file change detection
+- **Automatic Backups**: Creates timestamped backups on file modifications
+- **Smart Filtering**: `.versioningignore` file for excluding unwanted files
+- **Process Management**: PID tracking for easy start/stop operations
+- **Background Operation**: Non-intrusive monitoring with log output
+- **AI-Editor Friendly**: Perfect for use with AI-based code editors
+
+#### 📋 Prerequisites
+```bash
+# Ubuntu/Debian
+sudo apt-get install inotify-tools
+
+# CentOS/RHEL
+sudo yum install inotify-tools
+```
+
+#### 🚀 Usage
+
+**Quick Setup**:
+```bash
+cd scripts_04
+# Copy scripts to your target directory
+cp {setup_file_versioning.sh,file_versioning.sh,check_versioning.sh} /path/to/your/project/
+cd /path/to/your/project/
+
+# Run setup and start monitoring
+bash setup_file_versioning.sh
+nohup bash file_versioning.sh > file_versioning.log 2>&1 &
+```
+
+**Management Commands**:
+```bash
+# Check status
+bash check_versioning.sh
+
+# Stop monitoring
+pkill -f file_versioning.sh
+```
+
+#### 📁 File Organization
+- `backups/` - Timestamped backup files (auto-created)
+- `.versioningignore` - Ignore patterns configuration
+- `.file_versioning.pid` - Process ID for management
+- `file_versioning.log` - Monitoring activity log
+
+---
+
 ## 💻 Installation
 
 ### Prerequisites
 - **Python 3.8+** (for Scripts 01 & 02)
 - **Bash shell** (Linux/macOS/WSL)
 - **Git** (for repository operations)
+- **inotify-tools** (for Scripts 04 - Linux only)
 
 ### Optional Dependencies
 The tools gracefully handle missing dependencies:
@@ -201,6 +272,7 @@ The tools gracefully handle missing dependencies:
 - `shellcheck` - Shell script linting
 - `jq` - JSON processing
 - `ctags` - Code indexing
+- `inotify-tools` - Real-time file monitoring (required for Scripts 04)
 
 ### API Keys (Scripts 01 only)
 - **Gemini API Key**: Required for Google's Gemini models
@@ -281,12 +353,13 @@ The advanced tools automatically detect and prefer:
 #### Ubuntu/Debian
 ```bash
 sudo apt update
-sudo apt install cloc ripgrep tree shellcheck jq exuberant-ctags
+sudo apt install cloc ripgrep tree shellcheck jq exuberant-ctags inotify-tools
 ```
 
 #### macOS (with Homebrew)
 ```bash
 brew install cloc ripgrep tree shellcheck jq ctags
+# Note: inotify-tools not available on macOS (Scripts 04 requires Linux)
 ```
 
 #### Windows (WSL recommended)
@@ -333,6 +406,7 @@ ls -la scripts_*/
 - ✅ Scripts 01: Stable - AI-powered PRD generation working
 - ✅ Scripts 02: Stable - Basic coding assistance tools functional  
 - ✅ Scripts 03: Stable - Advanced analysis tools with comprehensive reporting
+- ✅ Scripts 04: Stable - File versioning system with real-time monitoring
 - 🔄 Continuous improvements and feature additions
 
 ## 🙏 Acknowledgments
