@@ -15,7 +15,7 @@ The Coding Task Manager consists of four main components:
 
 - [✨ Features](#-features)
 - [🚀 Quick Start](#-quick-start)
-- [🛠️ Root Utility Scripts](#-root-utility-scripts)
+- [🛠️ Root Utility Scripts](#root-utility-scripts)
 - [� Script Collections](#-script-collections)
   - [Scripts 01: AI-Powered Development Tools](#scripts-01-ai-powered-development-tools)
   - [Scripts 02: Basic Coding Assistant](#scripts-02-basic-coding-assistant)
@@ -97,7 +97,7 @@ The Coding Task Manager consists of four main components:
 
 4. **Follow the specific setup instructions** for your chosen collection below.
 
-## 🛠️ Root Utility Scripts
+## Root Utility Scripts
 
 The repository includes two utility scripts in the root directory for quick access:
 
