@@ -16,6 +16,7 @@ echo "Interactive Codebase Line Counter"
 echo "================================="
 echo "This script will count total lines of code in multiple codebases."
 echo "Results will be saved to: $OUTPUT_FILE"
+echo "Result saved to $OUTPUT_FILE"
 echo ""
 
 # Counter for codebase number
@@ -54,17 +55,15 @@ while true; do
     fi
     
     # Format the result
-    result="$codebase_name: $line_count lines"
+    result="Path: $folder_path - $line_count lines"
     
     # Display result
-    echo "Result: $result"
+    echo "$result"
     
     # Save to file
     echo "$result" >> "$OUTPUT_FILE"
-    echo "  Path: $folder_path" >> "$OUTPUT_FILE"
     echo "" >> "$OUTPUT_FILE"
     
-    echo "Result saved to $OUTPUT_FILE"
     echo ""
     
     # Increment counter
