@@ -1,26 +1,30 @@
 #!/bin/bash
 set -e
 
-# Simple coding assistant tools
+# Install required tools
+install_tools() {
+    local tools=("cloc" "ripgrep:rg" "shellcheck" "jq" "tree")
+    for tool in "${tools[@]}"; do
+        local cmd="${tool#*:}"
+        cmd="${cmd:-$tool}"
+        if ! command -v "$cmd" &>/dev/null; then
+            echo "Installing ${tool%:*}..."
+            apt-get update -qq && apt-get install -y "${tool%:*}"
+        fi
+    done
+}
 
 # Check if command exists
-cmd_exists() { command -v "$1" >/dev/null 2>&1; }
+cmd_exists() { command -v "$1" &>/dev/null; }
 
 # Count lines of code
-cloc_run() {
-    if cmd_exists cloc; then
-        cloc "${1:-.}"
-    else
-        echo "cloc not installed"
-    fi
-}
+cloc_run() { cmd_exists cloc && cloc "${1:-.}" || echo "cloc not installed"; }
 
 # Search for patterns
 search() {
-    local pattern="${1:-TODO}"
-    local path="${2:-.}"
+    local pattern="${1:-TODO}" path="${2:-.}"
     if cmd_exists rg; then
-        rg "$pattern" "$path" --line-number --with-filename
+        rg "$pattern" "$path" -n --with-filename
     elif cmd_exists grep; then
         grep -rn "$pattern" "$path"
     else
@@ -29,208 +33,96 @@ search() {
 }
 
 # Lint shell scripts
-lint_sh() {
-    if cmd_exists shellcheck; then
-        find . -name "*.sh" -exec shellcheck {} \;
-    else
-        echo "shellcheck not installed"
-    fi
-}
+lint_sh() { cmd_exists shellcheck && find . -name "*.sh" -exec shellcheck {} + || echo "shellcheck not installed"; }
 
 # Validate JSON files
-lint_json() {
-    if cmd_exists jq; then
-        find . -name "*.json" -exec sh -c 'jq empty "$1" && echo "✅ $1" || echo "❌ $1"' _ {} \;
-    else
-        echo "jq not installed"
-    fi
-}
+lint_json() { cmd_exists jq && find . -name "*.json" -exec sh -c 'jq -e . "$1" >/dev/null && echo "✅ $1" || echo "❌ $1"' _ {} + || echo "jq not installed"; }
 
 # Git statistics
 git_stats() {
-    if [[ -d .git ]]; then
-        echo "Commits: $(git rev-list --count HEAD 2>/dev/null || echo 'N/A')"
-        echo "Contributors:"
-        git shortlog -sn | head -5 2>/dev/null || echo "None"
-    else
-        echo "Not a git repository"
-    fi
+    [[ -d .git ]] || { echo "Not a git repository"; return; }
+    echo "Commits: $(git rev-list --count HEAD 2>/dev/null || echo 'N/A')"
+    echo "Contributors:"
+    git shortlog -sn | head -5 2>/dev/null || echo "None"
 }
 
 # Show directory tree
 tree_show() {
     local depth="${1:-2}"
-    if cmd_exists tree; then
-        tree -L "$depth" -I '.git|node_modules|__pycache__'
-    else
-        find . -maxdepth "$depth" -type d | head -20
-    fi
-}
-
-# Create reports directory if it doesn't exist
-ensure_reports_dir() { [[ ! -d "reports" ]] && mkdir -p reports; }
-
-# Generate timestamp for report filenames
-timestamp() { date +"%Y%m%d_%H%M%S"; }
-
-# Save output to report file
-save_to_report() {
-    local content="$1"
-    local report_type="$2"
-    ensure_reports_dir
-    local report_file="reports/${report_type}_$(timestamp).txt"
-    echo "$content" > "$report_file"
-    echo "Report saved: $report_file"
-}
-
-# Show menu
-show_menu() {
-    echo ""
-    echo "Coding Assistant Tools"
-    echo "======================"
-    echo "1) Count lines of code"
-    echo "2) Search for patterns"
-    echo "3) Lint shell scripts"
-    echo "4) Validate JSON files"
-    echo "5) Show git statistics"
-    echo "6) Show directory tree"
-    echo "7) Generate full report"
-    echo "0) Exit"
-    echo ""
+    cmd_exists tree && tree -L "$depth" -I '.git|node_modules|__pycache__' || find . -maxdepth "$depth" -type d | head -20
 }
 
 # Generate comprehensive report
 generate_report() {
-    ensure_reports_dir
-    local report_file="reports/full_report_$(timestamp).md"
+    local path="${1:-.}"
+    local report_file="reports/full_report_$(date +%Y%m%d_%H%M%S).md"
+    mkdir -p reports
     
-    echo "Generating comprehensive report..."
     {
         echo "# Project Analysis Report"
         echo "Generated: $(date)"
-        echo "Project: $(basename "$(pwd)")"
-        echo ""
-        
-        echo "## Code Metrics"
-        if cmd_exists cloc; then
-            cloc . --md 2>/dev/null || echo "Code metrics unavailable"
-        else
-            echo "cloc not installed"
-        fi
-        echo ""
-        
-        echo "## Directory Structure"
-        echo "\`\`\`"
-        if cmd_exists tree; then
-            tree -L 3 -I '.git|node_modules|__pycache__' 2>/dev/null || echo "Tree unavailable"
-        else
-            find . -maxdepth 3 -type d | head -20
-        fi
-        echo "\`\`\`"
-        echo ""
-        
-        echo "## Git Statistics"
-        if [[ -d .git ]]; then
-            echo "- Commits: $(git rev-list --count HEAD 2>/dev/null || echo 'N/A')"
-            echo "- Contributors: $(git shortlog -sn | wc -l 2>/dev/null || echo 'N/A')"
-            echo "- Last commit: $(git log -1 --format=%cd 2>/dev/null || echo 'N/A')"
-        else
-            echo "Not a git repository"
-        fi
-        echo ""
-        
-        echo "## File Summary"
-        local shell_count=$(find . -name "*.sh" 2>/dev/null | wc -l)
-        local json_count=$(find . -name "*.json" 2>/dev/null | wc -l)
-        local py_count=$(find . -name "*.py" 2>/dev/null | wc -l)
-        echo "- Shell scripts: $shell_count"
-        echo "- JSON files: $json_count"
-        echo "- Python files: $py_count"
-        
-    } > "$report_file"
+        echo "Project: $(basename "$(realpath "$path")")"
+        echo "Path: $(realpath "$path")"
+        echo -e "\n## Code Metrics"
+        cloc_run "$path"
+        echo -e "\n## Directory Structure\n\`\`\`"
+        (cd "$path" && tree_show 3)
+        echo -e "\`\`\`\n## Git Statistics"
+        (cd "$path" && git_stats)
+        echo -e "\n## File Summary"
+        printf "- Shell scripts: %d\n" "$(find "$path" -name "*.sh" | wc -l)"
+        printf "- JSON files: %d\n" "$(find "$path" -name "*.json" | wc -l)"
+        printf "- Python files: %d\n" "$(find "$path" -name "*.py" | wc -l)"
+    } | tee "$report_file"
     
-    echo "Full report generated: $report_file"
+    echo "Report generated: $report_file"
+}
+
+# Show menu
+show_menu() {
+    cat << 'EOF'
+
+Coding Assistant Tools
+======================
+1) Count lines of code
+2) Search for patterns
+3) Lint shell scripts
+4) Validate JSON files
+5) Show git statistics
+6) Show directory tree
+7) Generate full report
+0) Exit
+
+EOF
 }
 
 # Main interactive loop
 main_loop() {
     while true; do
         show_menu
-        read -p "Enter your choice (0-7): " choice
-        echo ""
+        read -rp "Enter your choice (0-7): " choice
+        echo
         
         case $choice in
-            1)
-                read -p "Enter path to analyze [current directory]: " path
-                output=$(cloc_run "${path:-.}" 2>&1)
-                echo "$output"
-                read -p "Save as report? (y/N): " save
-                if [[ "$save" =~ ^[Yy]$ ]]; then
-                    save_to_report "$output" "cloc_analysis"
-                fi
-                ;;
-            2)
-                read -p "Enter search pattern [TODO]: " pattern
-                read -p "Enter path to search [current directory]: " path
-                output=$(search "${pattern:-TODO}" "${path:-.}" 2>&1)
-                echo "$output"
-                read -p "Save as report? (y/N): " save
-                if [[ "$save" =~ ^[Yy]$ ]]; then
-                    save_to_report "$output" "search_results"
-                fi
-                ;;
-            3)
-                output=$(lint_sh 2>&1)
-                echo "$output"
-                read -p "Save as report? (y/N): " save
-                if [[ "$save" =~ ^[Yy]$ ]]; then
-                    save_to_report "$output" "shellcheck_report"
-                fi
-                ;;
-            4)
-                output=$(lint_json 2>&1)
-                echo "$output"
-                read -p "Save as report? (y/N): " save
-                if [[ "$save" =~ ^[Yy]$ ]]; then
-                    save_to_report "$output" "json_validation"
-                fi
-                ;;
-            5)
-                output=$(git_stats 2>&1)
-                echo "$output"
-                read -p "Save as report? (y/N): " save
-                if [[ "$save" =~ ^[Yy]$ ]]; then
-                    save_to_report "$output" "git_statistics"
-                fi
-                ;;
-            6)
-                read -p "Enter tree depth [2]: " depth
-                output=$(tree_show "${depth:-2}" 2>&1)
-                echo "$output"
-                read -p "Save as report? (y/N): " save
-                if [[ "$save" =~ ^[Yy]$ ]]; then
-                    save_to_report "$output" "directory_tree"
-                fi
-                ;;
-            7)
-                generate_report
-                ;;
-            0)
-                echo "Goodbye!"
-                exit 0
-                ;;
-            *)
-                echo "Invalid choice. Please enter a number between 0-7."
-                ;;
+            1) read -rp "Path [.]: " path; cloc_run "${path:-.}" ;;
+            2) read -rp "Pattern [TODO]: " pattern; read -rp "Path [.]: " path; search "${pattern:-TODO}" "${path:-.}" ;;
+            3) lint_sh ;;
+            4) lint_json ;;
+            5) git_stats ;;
+            6) read -rp "Depth [2]: " depth; tree_show "${depth:-2}" ;;
+            7) read -rp "Path to analyze [.]: " path; generate_report "${path:-.}" ;;
+            0) echo "Goodbye!"; exit 0 ;;
+            *) echo "Invalid choice. Please enter 0-7." ;;
         esac
         
-        echo ""
-        read -p "Press Enter to continue..."
+        echo
+        read -rp "Press Enter to continue..."
     done
 }
 
-# Command line mode or interactive mode
+# Command line interface
 if [[ $# -eq 0 ]]; then
+    install_tools
     main_loop
 else
     case "$1" in
@@ -240,22 +132,21 @@ else
         lint-json) lint_json ;;
         git-stats) git_stats ;;
         tree) tree_show "$2" ;;
-        report)
-            generate_report
-            ;;
-        *)
-            echo "Usage: $0 {cloc|search|lint-sh|lint-json|git-stats|tree|report}"
-            echo ""
-            echo "Commands:"
-            echo "  cloc [path]           - Count lines of code"
-            echo "  search [pattern] [path] - Search for patterns"
-            echo "  lint-sh               - Lint shell scripts"
-            echo "  lint-json             - Validate JSON files"
-            echo "  git-stats             - Show git statistics"
-            echo "  tree [depth]          - Show directory tree"
-            echo "  report                - Generate full project report"
-            echo ""
-            echo "Or run without arguments for interactive menu."
-            ;;
+        all) install_tools; generate_report "$2" ;;
+        *) cat << 'EOF'
+Usage: $0 {cloc|search|lint-sh|lint-json|git-stats|tree|all}
+
+Commands:
+  cloc [path]              - Count lines of code
+  search [pattern] [path]  - Search for patterns
+  lint-sh                  - Lint shell scripts
+  lint-json                - Validate JSON files
+  git-stats                - Show git statistics
+  tree [depth]             - Show directory tree
+  all [path]               - Run all and generate report
+
+Run without arguments for interactive menu.
+EOF
+        ;;
     esac
 fi
