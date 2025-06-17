@@ -75,7 +75,7 @@ cmd_exists() {
 
 # Cleanup function for temporary files
 cleanup() {
-    rm -f project_structure.txt sensitive_info.txt line_counts.txt
+    rm -f "$REPORTS_DIR/project_structure.txt" "$REPORTS_DIR/sensitive_info.txt" "$REPORTS_DIR/line_counts.txt"
 }
 
 # Set trap to cleanup on exit
@@ -185,7 +185,7 @@ generate_project_info() {
             echo "$(basename "$directory")/"
             generate_tree "$directory" "" true
         fi
-    } > project_structure.txt
+    } > "$REPORTS_DIR/project_structure.txt"
     
     # Search for sensitive information
     print_info "Scanning for sensitive information..."
@@ -205,7 +205,7 @@ generate_project_info() {
         else
             echo "✅ No sensitive patterns found"
         fi
-    } > sensitive_info.txt
+    } > "$REPORTS_DIR/sensitive_info.txt"
     
     # Count lines of code for various file types
     print_info "Counting lines of code..."
@@ -253,7 +253,7 @@ generate_project_info() {
         if [ $file_count -eq 0 ]; then
             echo "No code files found"
         fi
-    } > line_counts.txt
+    } > "$REPORTS_DIR/line_counts.txt"
     
     # Store project information
     print_info "Creating project_info.txt..."
@@ -261,15 +261,15 @@ generate_project_info() {
         echo "=== PROJECT INFORMATION ==="
         echo "Generated on: $(date)"
         echo ""
-        cat project_structure.txt
+        cat "$REPORTS_DIR/project_structure.txt"
         echo ""
-        cat sensitive_info.txt
+        cat "$REPORTS_DIR/sensitive_info.txt"
         echo ""
-        cat line_counts.txt
-    } > project_info.txt
+        cat "$REPORTS_DIR/line_counts.txt"
+    } > "$REPORTS_DIR/project_info.txt"
     
-    print_success "Project information saved to project_info.txt"
-    print_info "Individual reports: project_structure.txt, sensitive_info.txt, line_counts.txt"
+    print_success "Project information saved to $REPORTS_DIR/project_info.txt"
+    print_info "Individual reports: $REPORTS_DIR/project_structure.txt, $REPORTS_DIR/sensitive_info.txt, $REPORTS_DIR/line_counts.txt"
 }
 
 # ============================================================================
@@ -1027,7 +1027,7 @@ view_reports() {
 clean_temp_files() {
     print_header "Cleaning Temporary Files"
     
-    local files_to_clean=("project_structure.txt" "sensitive_info.txt" "line_counts.txt" "project_info.txt" "functions.txt" "tags" "cloc_report.txt")
+    local files_to_clean=("$REPORTS_DIR/project_structure.txt" "$REPORTS_DIR/sensitive_info.txt" "$REPORTS_DIR/line_counts.txt" "$REPORTS_DIR/project_info.txt" "functions.txt" "tags" "cloc_report.txt")
     local cleaned=0
     
     for file in "${files_to_clean[@]}"; do
