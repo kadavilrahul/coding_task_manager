@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Interactive script to count total lines of code in multiple codebases
+# Interactive script to count and compare total lines of code in multiple codebases
 # Uses: find /path/to/folder -type f -exec wc -l {} + | tail -n 1
 
 # Output file for results
