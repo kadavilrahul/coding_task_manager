@@ -15,7 +15,8 @@ The Coding Task Manager consists of four main components:
 
 - [✨ Features](#-features)
 - [🚀 Quick Start](#-quick-start)
-- [📁 Script Collections](#-script-collections)
+- [🛠️ Root Utility Scripts](#-root-utility-scripts)
+- [� Script Collections](#-script-collections)
   - [Scripts 01: AI-Powered Development Tools](#scripts-01-ai-powered-development-tools)
   - [Scripts 02: Basic Coding Assistant](#scripts-02-basic-coding-assistant)
   - [Scripts 03: Advanced Coding Assistant](#scripts-03-advanced-coding-assistant)
@@ -66,7 +67,20 @@ The Coding Task Manager consists of four main components:
    cd coding_task_manager
    ```
 
-2. **Choose your script collection**:
+2. **Root utility**:
+
+   A unified script that combines functionality from all script collections into a single executable.
+
+   ```bash
+   bash run.sh
+   ```
+   Interactive tool for counting and comparing total lines of code across multiple codebases.
+
+   ```bash
+   bash compare.sh
+   ```
+
+3. **Choose your script collection**:
    ```bash
    # For AI-powered PRD generation
    cd scripts_01
@@ -81,9 +95,53 @@ The Coding Task Manager consists of four main components:
    cd scripts_04
    ```
 
-3. **Follow the specific setup instructions** for your chosen collection below.
+4. **Follow the specific setup instructions** for your chosen collection below.
 
-## 📁 Script Collections
+## 🛠️ Root Utility Scripts
+
+The repository includes two utility scripts in the root directory for quick access:
+
+### [`run.sh`](run.sh) - Comprehensive Shell Script Runner
+A unified script that combines functionality from all script collections into a single executable.
+
+**Features:**
+- **Project Analysis**: Generate comprehensive project information and structure
+- **Code Metrics**: CLOC integration for detailed line counting
+- **Function Discovery**: Multiple methods (grep, ctags, AST) for function extraction
+- **File Monitoring**: Real-time file versioning and backup capabilities
+- **Quality Tools**: Linting, validation, and code quality checks
+- **Interactive & CLI Modes**: Flexible usage options
+
+**Usage:**
+```bash
+# Run interactively
+./run.sh
+
+# Or use specific functions directly
+./run.sh generate_project_info
+./run.sh install_and_run_cloc
+./run.sh collect_functions_interactive
+```
+
+### [`compare.sh`](compare.sh) - Codebase Line Counter & Comparator
+Interactive tool for counting and comparing total lines of code across multiple codebases.
+
+**Features:**
+- **Multi-Codebase Analysis**: Compare line counts across different projects
+- **Interactive Interface**: User-friendly prompts for folder selection
+- **Automated Reporting**: Results saved to `codebase_line_counts.txt`
+- **Error Handling**: Validates paths and handles missing directories
+
+**Usage:**
+```bash
+./compare.sh
+# Follow prompts to enter codebase paths
+# Type 'quit' or 'q' to finish and generate report
+```
+
+---
+
+## � Script Collections
 
 ### Scripts 01: AI-Powered Development Tools
 
