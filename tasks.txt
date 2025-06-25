@@ -1,7 +1,9 @@
 Task:
-1. Create run.sh file to run the code everytime. Make a comprehensive run.sh which checks all environment and package installations, installs only if not already present, runs the script with description, interactive user input with serial numbers, complete end to end setup and running without me looking at README█.
+1. Create run.sh file to run the code everytime. Make a comprehensive run.sh which checks all environment and package installations, installs only if not already present, runs the script with description, interactive user input with serial numbers, complete end to end setup and running without me looking at README█. It should not have verbose.
 2. Create test_run.sh file to make run.sh run with user inputs so that no input is needed from the user to test the scripts and log output to log file
 3. Create references.txt for reference of documents and tutorials
 4. Create .rules or file with suitable name for code editor rules
 5. Make system prompt
 6. Make MCP's if needed
+7. Dont make any markdown files until I tell you to do so
+8. Find references before starting the project and when you get stuck
