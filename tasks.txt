@@ -4,6 +4,8 @@ Task:
 3. Create references folder with tutorials documents etc and index.txt for reference of documents and tutorials
 4. Create .rules or .agent.md or file with suitable name for code editor rules
 5. Make system prompt
-6. Make MCP's if needed
-7. Dont make any markdown files until I tell you to do so
-8. Find references before starting the project and when you get stuck
+6. Dont make any markdown files until I tell you to do so
+7. Find references from internet before starting the project and when you get stuck
+
+Optional:
+Make MCP's if needed
