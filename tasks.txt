@@ -7,6 +7,7 @@ Task:
 - Create references folder with tutorials documents etc and index.txt for reference of documents and tutorials
 - Dont make any markdown files until I tell you to do so
 - Find references from internet before starting the project and when you get stuck
+- Create and edit files in smaller chunks to avoid LLM response error
 
 Optional:
 - Make MCP's if needed
