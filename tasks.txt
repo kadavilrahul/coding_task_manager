@@ -1,5 +1,5 @@
 Task:
-1. Create run.sh file to run the code everytime. Make a comprehensive run.sh which checks all environment and package installations, installs only if not already present, runs the script with description, interactive user input with serial numbers, complete end to end setup and running without me looking at README█. It should not have verbose.
+1. Create run.sh file to run the code everytime. Make a comprehensive run.sh which checks all environment and package installations, installs only if not already present, runs the script with description, interactive user input with serial numbers, complete end to end setup and running without me looking at README█. It should not have verbose. Make run.sh minimalistic and test it.
 2. Create test_run.sh file to make run.sh run with user inputs so that no input is needed from the user to test the scripts and log output to log file
 3. Create references folder with tutorials documents etc and index.txt for reference of documents and tutorials
 4. Create .rules or .agent.md or file with suitable name for code editor rules
