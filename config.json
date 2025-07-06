@@ -1,7 +1,7 @@
 {
   "github": {
     "username": "github_username",
-    "token": "ghp_XXXXXXXXXXXXXXXXXXXXXXX"
+    "token": "XXXXXXXXXXXXXXXXXXXXXXX"
   },
   "clone": {
     "default_path": "./repos"
