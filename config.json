@@ -1,0 +1,17 @@
+{
+  "github": {
+    "username": "github_username",
+    "token": "ghp_XXXXXXXXXXXXXXXXXXXXXXX"
+  },
+  "clone": {
+    "default_path": "./repos"
+  },
+  "favorites": [],
+  "recent": [],
+  "filters": {
+    "show_private": true,
+    "show_public": true,
+    "languages": [],
+    "exclude_forks": false
+  }
+}
