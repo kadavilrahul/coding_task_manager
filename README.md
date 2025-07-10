@@ -1,26 +1,31 @@
 # Coding Task Manager
 
-A comprehensive suite of AI-powered development tools that provides structured workflows for software development, code analysis, and project management. This toolkit includes four specialized script collections for different aspects of development assistance.
+A comprehensive suite of AI-powered development tools that provides structured workflows for software development, code analysis, and project management. This toolkit includes six specialized script collections for different aspects of development assistance.
 
 ## 🚀 Overview
 
-The Coding Task Manager consists of four main components:
+The Coding Task Manager consists of six main components:
 
-- **Scripts 01**: AI-powered PRD generation and development SOPs
-- **Scripts 02**: Basic coding assistant with function extraction tools  
-- **Scripts 03**: Advanced coding assistant with comprehensive analysis and reporting
-- **Scripts 04**: File versioning system with real-time backup monitoring
+- **AI-Powered Development**: AI-powered PRD generation and development SOPs
+- **Basic Coding Assistant**: Basic coding assistant with function extraction tools  
+- **Advanced Coding Assistant**: Advanced coding assistant with comprehensive analysis and reporting
+- **File Versioning System**: File versioning system with real-time backup monitoring
+- **Flowchart Generator**: Streamlined flowchart generation in HTML and PNG formats
+- **Remote Linux Tools**: Automated remote Linux server login and command execution
 
 ## 📋 Table of Contents
 
 - [✨ Features](#-features)
 - [🚀 Quick Start](#-quick-start)
 - [🛠️ Root Utility Scripts](#root-utility-scripts)
-- [� Script Collections](#-script-collections)
-  - [Scripts 01: AI-Powered Development Tools](#scripts-01-ai-powered-development-tools)
-  - [Scripts 02: Basic Coding Assistant](#scripts-02-basic-coding-assistant)
-  - [Scripts 03: Advanced Coding Assistant](#scripts-03-advanced-coding-assistant)
-  - [Scripts 04: File Versioning System](#scripts-04-file-versioning-system)
+- [📁 Script Collections](#-script-collections)
+  - [AI-Powered Development Tools](#ai-powered-development-tools)
+  - [Basic Coding Assistant](#basic-coding-assistant)
+  - [Advanced Coding Assistant](#advanced-coding-assistant)
+  - [File Versioning System](#file-versioning-system)
+  - [Flowchart Generator](#flowchart-generator)
+  - [Remote Linux Tools](#remote-linux-tools)
+- [🛠️ Utilities](#-utilities)
 - [💻 Installation](#-installation)
 - [📚 Usage Examples](#-usage-examples)
 - [⚙️ Configuration](#️-configuration)
@@ -83,16 +88,22 @@ The Coding Task Manager consists of four main components:
 3. **Choose your script collection**:
    ```bash
    # For AI-powered PRD generation
-   cd scripts_01
+   cd ai_powered_development
    
    # For basic coding assistance
-   cd scripts_02
+   cd basic_coding_assistant
    
    # For advanced analysis tools
-   cd scripts_03
+   cd advanced_coding_assistant
    
    # For file versioning and backup
-   cd scripts_04
+   cd file_versioning_system
+   
+   # For flowchart generation
+   cd flowchart_generator
+   
+   # For remote Linux operations
+   cd remote_linux_tools
    ```
 
 4. **Follow the specific setup instructions** for your chosen collection below.
@@ -141,9 +152,9 @@ Interactive tool for counting and comparing total lines of code across multiple 
 
 ---
 
-## � Script Collections
+## 📁 Script Collections
 
-### Scripts 01: AI-Powered Development Tools
+### AI-Powered Development Tools
 
 **Purpose**: AI-powered PRD generation, development SOPs, and MCP integration for enhanced coding workflows.
 
@@ -156,7 +167,7 @@ Interactive tool for counting and comparing total lines of code across multiple 
 
 #### 📦 Installation
 ```bash
-cd scripts_01
+cd ai_powered_development
 python3 -m venv venv
 source venv/bin/activate  # On Linux/macOS
 # venv\Scripts\activate  # On Windows
@@ -184,7 +195,7 @@ cat 00_generate_mcp.md
 
 ---
 
-### Scripts 02: Basic Coding Assistant
+### Basic Coding Assistant
 
 **Purpose**: Essential coding assistance with function extraction and basic code analysis tools.
 
@@ -196,7 +207,7 @@ cat 00_generate_mcp.md
 
 #### 📦 Installation
 ```bash
-cd scripts_02
+cd basic_coding_assistant
 # Optional: Create virtual environment for Python scripts
 python3 -m venv venv
 source venv/bin/activate
@@ -216,7 +227,7 @@ python extract_functions.py
 
 ---
 
-### Scripts 03: Advanced Coding Assistant
+### Advanced Coding Assistant
 
 **Purpose**: Professional-grade coding assistance with comprehensive analysis, reporting, and quality tools.
 
@@ -236,7 +247,7 @@ python extract_functions.py
 
 **Interactive Mode**:
 ```bash
-cd scripts_03
+cd advanced_coding_assistant
 ./coding_assistant_tools.sh
 ```
 
@@ -257,7 +268,7 @@ cd scripts_03
 
 ---
 
-### Scripts 04: File Versioning System
+### File Versioning System
 
 **Purpose**: Lightweight file versioning system with real-time monitoring and automatic backup creation using Linux inotify.
 
@@ -287,7 +298,7 @@ sudo yum install inotify-tools
 
 **Quick Setup**:
 ```bash
-cd scripts_04
+cd file_versioning_system
 # Copy scripts to your target directory
 cp {setup_file_versioning.sh,file_versioning.sh,check_versioning.sh} /path/to/your/project/
 cd /path/to/your/project/
@@ -314,13 +325,109 @@ pkill -f file_versioning.sh
 
 ---
 
+### Flowchart Generator
+
+**Purpose**: Streamlined flowchart generation in HTML and PNG formats for AI workflows and documentation.
+
+#### 🛠️ Tools Included
+- `setup_flowchart.sh` - Automated setup and dependency installation
+- `generate.sh` - Flowchart generation script
+
+#### 📦 Features
+- Command line based flowchart generation environment
+- Automated dependency management and setup
+- HTML and PNG output formats
+- Easy-to-use command line interface
+- Automatic environment configuration
+
+#### 🚀 Usage
+
+**First time setup**:
+```bash
+cd flowchart_generator
+bash setup_flowchart.sh
+```
+
+**Subsequent runs**:
+```bash
+bash generate.sh
+```
+
+#### 🔧 System Requirements
+- Linux system with GUI (GUI needed to view files)
+- Tested on Ubuntu 24.04 LTS
+
+---
+
+### Remote Linux Tools
+
+**Purpose**: Automated remote Linux server login and command execution for distributed development workflows.
+
+#### 🛠️ Tools Included
+- `main.sh` - Main automation script for remote command execution
+- `test_login_manually.sh` - Interactive login testing script
+- `test_run_commands_with_manual_login.sh` - Combined login and command execution test
+
+#### 📦 Features
+- **Secure SSH Authentication**: Multiple authentication methods supported
+- **Automated Command Execution**: Execute commands on remote servers automatically
+- **Configurable Settings**: Easy-to-configure remote server parameters
+- **Error Handling**: Robust error handling and validation
+- **Interactive Testing**: Manual testing capabilities for debugging
+- **Batch Operations**: Support for running multiple commands
+
+#### 🚀 Usage
+
+**Configuration**:
+```bash
+cd remote_linux_tools
+# Edit main.sh to configure:
+DEFAULT_USER="your_username"
+DEFAULT_PORT="22"
+DEFAULT_IP="remote_server_ip"
+DEFAULT_PASS="your_password"  # Use SSH keys instead
+```
+
+**Automated Execution**:
+```bash
+bash main.sh
+```
+
+**Interactive Testing**:
+```bash
+bash test_login_manually.sh
+bash test_run_commands_with_manual_login.sh
+```
+
+---
+
+## 🛠️ Utilities
+
+The `utilities/` directory contains core tools that support all script collections:
+
+### Tools Included
+- **`github_repository_cloner.sh`** - Interactive GitHub repository cloning with API integration
+- **`project_analyzer.sh`** - Comprehensive project analysis and reporting
+- **`codebase_comparator.sh`** - Multi-codebase line count comparison
+- **`config.json`** - Configuration file for GitHub operations
+
+### Usage
+```bash
+cd utilities
+bash github_repository_cloner.sh    # Clone GitHub repositories
+bash project_analyzer.sh            # Analyze projects
+bash codebase_comparator.sh         # Compare codebases
+```
+
+---
+
 ## 💻 Installation
 
 ### Prerequisites
-- **Python 3.8+** (for Scripts 01 & 02)
+- **Python 3.8+** (for AI-Powered Development & Basic Coding Assistant)
 - **Bash shell** (Linux/macOS/WSL)
 - **Git** (for repository operations)
-- **inotify-tools** (for Scripts 04 - Linux only)
+- **inotify-tools** (for File Versioning System - Linux only)
 
 ### Optional Dependencies
 The tools gracefully handle missing dependencies:
@@ -332,7 +439,7 @@ The tools gracefully handle missing dependencies:
 - `ctags` - Code indexing
 - `inotify-tools` - Real-time file monitoring (required for Scripts 04)
 
-### API Keys (Scripts 01 only)
+### API Keys (AI-Powered Development only)
 - **Gemini API Key**: Required for Google's Gemini models
 - **Anthropic API Key**: Optional for Claude models
 
@@ -340,19 +447,19 @@ The tools gracefully handle missing dependencies:
 
 ### Generate a Complete Project Analysis
 ```bash
-# Using Scripts 01
-cd scripts_01
+# Using AI-Powered Development
+cd ai_powered_development
 bash 00_generate_project_info.sh
 python 00_generate_prd.py
 
-# Using Scripts 03 for detailed analysis
-cd ../scripts_03
+# Using Advanced Coding Assistant for detailed analysis
+cd ../advanced_coding_assistant
 ./coding_assistant_tools.sh report
 ```
 
 ### Code Quality Workflow
 ```bash
-cd scripts_03
+cd advanced_coding_assistant
 
 # Check shell scripts
 ./coding_assistant_tools.sh lint-sh
@@ -366,7 +473,7 @@ cd scripts_03
 
 ### Function Discovery Workflow
 ```bash
-cd scripts_02
+cd basic_coding_assistant
 
 # Interactive method selection
 bash collect_functions.sh
@@ -377,7 +484,7 @@ python extract_functions.py
 
 ## ⚙️ Configuration
 
-### Environment Variables (Scripts 01)
+### Environment Variables (AI-Powered Development)
 ```bash
 # Required for AI features
 GEMINI_API_KEY=your_key_here
@@ -386,7 +493,7 @@ GEMINI_API_KEY=your_key_here
 ANTHROPIC_API_KEY=your_key_here
 ```
 
-### Tool Preferences (Scripts 03)
+### Tool Preferences (Advanced Coding Assistant)
 The advanced tools automatically detect and prefer:
 - `ripgrep` over `grep` for searching
 - `tree` over `find` for directory listing
@@ -396,12 +503,12 @@ The advanced tools automatically detect and prefer:
 
 ### Common Issues
 
-#### Scripts 01
+#### AI-Powered Development
 - **`ValueError: Missing GEMINI_API_KEY`**: Create `.env` file with valid API key
 - **`ModuleNotFoundError`**: Activate virtual environment and run `pip install -r requirements.txt`
 - **`google-genai` errors**: Ensure `pip install google-genai` completed successfully
 
-#### Scripts 02 & 03
+#### Basic & Advanced Coding Assistant
 - **Permission denied**: Make scripts executable with `chmod +x *.sh`
 - **Command not found**: Install missing dependencies or use fallback options
 - **No functions found**: Ensure you're in a directory with code files
@@ -417,7 +524,7 @@ sudo apt install cloc ripgrep tree shellcheck jq exuberant-ctags inotify-tools
 #### macOS (with Homebrew)
 ```bash
 brew install cloc ripgrep tree shellcheck jq ctags
-# Note: inotify-tools not available on macOS (Scripts 04 requires Linux)
+# Note: inotify-tools not available on macOS (File Versioning System requires Linux)
 ```
 
 #### Windows (WSL recommended)
@@ -432,7 +539,7 @@ Use WSL with Ubuntu and follow the Ubuntu installation steps.
 5. Open a Pull Request
 
 ### Development Guidelines
-- Follow the 150-line modularity constraint from Scripts 01 SOP
+- Follow the 150-line modularity constraint from AI-Powered Development SOP
 - Add comprehensive error handling
 - Include usage examples in documentation
 - Test on multiple platforms when possible
@@ -449,7 +556,7 @@ find . -name "*.py" -o -name "*.sh" -o -name "*.json" -o -name "*.md" | wc -l
 # Expected: ~15+ files across all script collections
 
 # Check script collections
-ls -la scripts_*/
+ls -la */
 ```
 
 ## 🔗 Related Projects
@@ -461,10 +568,13 @@ ls -la scripts_*/
 
 ## 🚦 Status
 
-- ✅ Scripts 01: Stable - AI-powered PRD generation working
-- ✅ Scripts 02: Stable - Basic coding assistance tools functional  
-- ✅ Scripts 03: Stable - Advanced analysis tools with comprehensive reporting
-- ✅ Scripts 04: Stable - File versioning system with real-time monitoring
+- ✅ **AI-Powered Development**: Stable - AI-powered PRD generation working
+- ✅ **Basic Coding Assistant**: Stable - Basic coding assistance tools functional  
+- ✅ **Advanced Coding Assistant**: Stable - Advanced analysis tools with comprehensive reporting
+- ✅ **File Versioning System**: Stable - File versioning system with real-time monitoring
+- ✅ **Flowchart Generator**: Stable - Flowchart generation in HTML and PNG formats
+- ✅ **Remote Linux Tools**: Stable - Remote SSH automation and command execution
+- ✅ **Utilities**: Stable - Core utility tools for project management
 - 🔄 Continuous improvements and feature additions
 
 ## 🙏 Acknowledgments
