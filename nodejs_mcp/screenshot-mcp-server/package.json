@@ -1,0 +1,18 @@
+{
+  "name": "screenshot-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for taking webpage screenshots",
+  "main": "screenshot-mcp-server.js",
+  "bin": {
+    "screenshot-mcp-server": "./screenshot-mcp-server.js"
+  },
+  "scripts": {
+    "start": "node screenshot-mcp-server.js"
+  },
+  "keywords": ["mcp", "screenshot", "webpage"],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

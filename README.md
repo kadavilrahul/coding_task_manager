@@ -1,10 +1,10 @@
 # Coding Task Manager
 
-A comprehensive suite of AI-powered development tools that provides structured workflows for software development, code analysis, and project management. This toolkit includes six specialized script collections for different aspects of development assistance.
+A comprehensive suite of AI-powered development tools that provides structured workflows for software development, code analysis, and project management. This toolkit includes eight specialized script collections for different aspects of development assistance.
 
 ## 🚀 Overview
 
-The Coding Task Manager consists of seven main components:
+The Coding Task Manager consists of eight main components:
 
 - **AI-Powered Development**: AI-powered PRD generation and development SOPs
 - **Basic Coding Assistant**: Basic coding assistant with function extraction tools  
@@ -13,6 +13,7 @@ The Coding Task Manager consists of seven main components:
 - **Flowchart Generator**: Streamlined flowchart generation in HTML and PNG formats
 - **Remote Linux Tools**: Automated remote Linux server login and command execution
 - **Docker MCP**: Model Context Protocol server setup with Docker for browser automation
+- **Node.js MCP**: Production-ready MCP servers for e-commerce and AI agent businesses
 
 ## 📋 Table of Contents
 
@@ -27,6 +28,7 @@ The Coding Task Manager consists of seven main components:
   - [Flowchart Generator](#flowchart-generator)
   - [Remote Linux Tools](#remote-linux-tools)
   - [Docker MCP](#docker-mcp)
+  - [Node.js MCP](#nodejs-mcp)
 - [🛠️ Utilities](#-utilities)
 - [💻 Installation](#-installation)
 - [📚 Usage Examples](#-usage-examples)
@@ -106,6 +108,9 @@ The Coding Task Manager consists of seven main components:
    
    # For remote Linux operations
    cd remote_linux_tools
+   
+   # For Node.js MCP servers
+   cd nodejs_mcp
    ```
 
 4. **Follow the specific setup instructions** for your chosen collection below.
@@ -505,6 +510,197 @@ docker-compose restart
 
 ---
 
+### Node.js MCP
+
+**Purpose**: Production-ready Model Context Protocol servers optimized for e-commerce businesses and AI agent services.
+
+#### 🛠️ Tools Included
+- **Screenshot MCP Server** - Custom Node.js implementation for webpage screenshots
+- **Context7 MCP Server** - Real-time documentation injection
+- **IDE Server Integration** - Built-in development environment support
+- **Installation Scripts** - Automated setup for production deployment
+- **Comprehensive Documentation** - Business-specific guides and troubleshooting
+
+#### 📦 Features
+- **E-commerce Focused**: Optimized for businesses with 120,000+ products
+- **Production Ready**: Tested and reliable MCP servers
+- **Business Intelligence**: Perfect for AI agent services
+- **WordPress/WooCommerce**: Specialized tools for e-commerce platforms
+- **Server Management**: Ideal for Hetzner/Ubuntu LAMP stack environments
+- **Indian Market**: Considerations for Kerala-based e-commerce operations
+
+#### 🚀 Active MCP Servers
+
+**1. Screenshot Server (mcp__screenshot-server__)**
+- Take screenshots of webpages for monitoring
+- Capture competitor site changes
+- Visual documentation for clients
+- Custom Node.js implementation using headless Chrome
+
+**2. Context7 Server (mcp__context7__)**
+- Get current, version-specific documentation
+- Eliminate outdated API examples
+- Perfect for WordPress/WooCommerce development
+- Supports all major frameworks and libraries
+
+**3. IDE Server (mcp__ide__)**
+- Language diagnostics from VS Code
+- Execute Python code in Jupyter kernel
+- Code analysis and debugging support
+- Built-in Claude Code functionality
+
+#### 📦 Installation
+
+**Quick Setup**:
+```bash
+cd nodejs_mcp
+# Install working MCP servers only
+./install-working-mcps.sh
+```
+
+**Manual Installation**:
+```bash
+# Add Context7 MCP Server
+claude mcp add context7 "npx @upstash/context7-mcp"
+
+# Add Screenshot MCP Server
+claude mcp add screenshot-server "/root/screenshot-mcp-server.js"
+
+# Verify installation
+claude mcp list
+```
+
+#### 📋 Prerequisites
+- Node.js (v20.0.0 or higher)
+- Claude Code CLI
+- Chromium browser (for screenshots)
+- npm/npx (for Context7)
+
+#### 💼 Business Use Cases
+
+**E-commerce Operations**:
+- Monitor nilgiristores.in and silkroademart.com visually
+- Screenshot competitor pricing and inventory
+- Get current WooCommerce/WordPress documentation
+- Analyze business data with Python/Jupyter
+
+**AI Agent Services**:
+- Client website screenshots for reports
+- Current library documentation for development
+- Code diagnostics and quality assurance
+- Professional development environment
+
+**Server Management**:
+- Visual monitoring of Hetzner server dashboards
+- Current API documentation for integrations
+- Development tools for server-side applications
+- Screenshot-based change verification
+
+#### 🔧 Configuration
+
+**Screenshot Server Setup**:
+```bash
+# Custom Node.js implementation
+chmod +x screenshot-mcp-server.js
+node screenshot-mcp-server.js --help
+```
+
+**Context7 Configuration**:
+```bash
+# Uses Upstash service for real-time documentation
+npx @upstash/context7-mcp --help
+```
+
+#### 📊 Usage Examples
+
+**Screenshot Operations**:
+```
+Take a screenshot of https://nilgiristores.in
+Screenshot competitor site https://example.com
+Capture the WordPress admin dashboard
+```
+
+**Documentation Lookup**:
+```
+use context7 - show me WooCommerce REST API documentation
+use context7 - get current WordPress plugin development guide
+use context7 - find React hooks best practices
+```
+
+**Development Support**:
+```
+Get diagnostics for this JavaScript file
+Execute this Python code in Jupyter
+Analyze this WooCommerce plugin code
+```
+
+#### 🌍 India-Specific Benefits
+
+**Kerala E-commerce Focus**:
+- Monitor Indian marketplace competitors
+- Get INR-specific payment gateway documentation
+- Screenshot regional website changes
+- Support for multilingual e-commerce sites
+
+**Local Business Intelligence**:
+- Analyze Kerala market trends with Python
+- Monitor spice industry competitors
+- Tourism website screenshot monitoring
+- Local supplier website tracking
+
+#### 🔍 Troubleshooting
+
+**Common Issues**:
+- **Connection timeouts**: Check network connectivity
+- **Context7 limits**: Monitor API usage quotas
+- **Screenshot failures**: Verify Chromium installation
+- **IDE connectivity**: Restart Claude Code if needed
+
+**Debug Commands**:
+```bash
+# Check MCP server status
+claude mcp list
+
+# Enable debug logging
+claude --debug mcp list
+
+# Test screenshot server
+node screenshot-mcp-server.js --help
+```
+
+#### 📚 Documentation Structure
+```
+nodejs_mcp/
+├── MCP-SERVERS-OVERVIEW.md          # Complete business overview
+├── install-working-mcps.sh          # Production installation script
+├── context7-mcp-server/             # Context7 documentation
+│   ├── README.md
+│   ├── context7-install.md
+│   └── mcp-commands.sh
+└── screenshot-mcp-server/           # Screenshot server files
+    ├── README.md
+    ├── screenshot-mcp-server.js
+    ├── package.json
+    └── install.sh
+```
+
+#### 🛡️ Security & Reliability
+
+**Production Features**:
+- Only working, tested MCP servers
+- Secure screenshot capture (no system access)
+- Read-only documentation access
+- Controlled Python/Jupyter environment
+- No persistent storage of sensitive data
+
+**Business Reliability**:
+- Custom Node.js implementation for screenshots
+- Official Upstash Context7 server
+- Built-in Claude Code IDE functionality
+- Comprehensive error handling and logging
+
+---
+
 ## 🛠️ Utilities
 
 The `utilities/` directory contains core tools that support all script collections:
@@ -679,6 +875,7 @@ ls -la */
 - ✅ **Flowchart Generator**: Stable - Flowchart generation in HTML and PNG formats
 - ✅ **Remote Linux Tools**: Stable - Remote SSH automation and command execution
 - ✅ **Docker MCP**: Stable - Model Context Protocol server with Docker for browser automation
+- ✅ **Node.js MCP**: Production Ready - Working MCP servers for e-commerce and AI agent businesses
 - ✅ **Utilities**: Stable - Core utility tools for project management
 - 🔄 Continuous improvements and feature additions
 
