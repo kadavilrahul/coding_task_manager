@@ -11,7 +11,7 @@ A Model Context Protocol (MCP) server for taking webpage screenshots using headl
 ## Prerequisites
 
 - Node.js (v14.0.0 or higher)
-- Chromium browser (`chromium-browser` command available)
+- Google Chrome or Chromium browser (Chrome preferred)
 - Claude Code CLI installed
 
 ## Installation Steps
@@ -78,11 +78,20 @@ const command = `chromium-browser --headless --disable-gpu --disable-software-ra
 - `width` (optional) - Viewport width in pixels (default: 1920)
 - `height` (optional) - Viewport height in pixels (default: 1080)
 - `output_path` (optional) - Custom save path (default: auto-generated)
+- `browser` (optional) - Browser to use: 'chrome', 'chromium', or 'auto' (default: auto)
 
 ### Example Usage
 
 ```
 Take a screenshot of https://google.com with width 1280 and height 720
+```
+
+```
+Take a screenshot of https://example.com using chrome browser
+```
+
+```
+Take a screenshot of https://example.com using chromium browser
 ```
 
 ## Technical Details

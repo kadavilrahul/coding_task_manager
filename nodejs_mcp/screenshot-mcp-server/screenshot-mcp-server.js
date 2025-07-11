@@ -30,6 +30,12 @@ class ScreenshotMCPServer {
                     output_path: {
                         type: "string",
                         description: "Path to save the screenshot (optional)"
+                    },
+                    browser: {
+                        type: "string",
+                        description: "Browser to use: 'chrome', 'chromium', or 'auto' (default: auto)",
+                        enum: ["chrome", "chromium", "auto"],
+                        default: "auto"
                     }
                 },
                 required: ["url"]
@@ -37,7 +43,7 @@ class ScreenshotMCPServer {
         }];
     }
 
-    takeScreenshot(url, width = 1920, height = 1080, outputPath = null) {
+    takeScreenshot(url, width = 1920, height = 1080, outputPath = null, browserChoice = 'auto') {
         try {
             // Validate and fix URL
             if (!url.startsWith('http://') && !url.startsWith('https://')) {
@@ -60,8 +66,39 @@ class ScreenshotMCPServer {
                 fs.mkdirSync(outputDir, { recursive: true });
             }
 
-            // Take screenshot using headless Chrome
-            const command = `chromium-browser --headless --disable-gpu --disable-software-rasterizer --no-sandbox --screenshot="${outputPath}" --window-size=${width},${height} --virtual-time-budget=10000 "${url}"`;
+            // Determine browser to use
+            let browser;
+            if (browserChoice === 'chrome') {
+                try {
+                    execSync('which google-chrome', { stdio: 'pipe' });
+                    browser = 'google-chrome';
+                } catch (e) {
+                    throw new Error('Google Chrome not found. Please install Chrome or use "chromium" option.');
+                }
+            } else if (browserChoice === 'chromium') {
+                try {
+                    execSync('which chromium-browser', { stdio: 'pipe' });
+                    browser = 'chromium-browser';
+                } catch (e) {
+                    throw new Error('Chromium browser not found. Please install Chromium or use "chrome" option.');
+                }
+            } else {
+                // Auto-detect (prefer Chrome over Chromium)
+                try {
+                    execSync('which google-chrome', { stdio: 'pipe' });
+                    browser = 'google-chrome';
+                } catch (e) {
+                    try {
+                        execSync('which chromium-browser', { stdio: 'pipe' });
+                        browser = 'chromium-browser';
+                    } catch (e2) {
+                        throw new Error('Neither Google Chrome nor Chromium browser found. Please install one of them.');
+                    }
+                }
+            }
+
+            // Take screenshot using headless browser
+            const command = `${browser} --headless --disable-gpu --disable-software-rasterizer --no-sandbox --screenshot="${outputPath}" --window-size=${width},${height} --virtual-time-budget=10000 "${url}"`;
             
             execSync(command, { 
                 stdio: 'pipe',
@@ -82,7 +119,8 @@ class ScreenshotMCPServer {
                 url: url,
                 dimensions: `${width}x${height}`,
                 file_size_bytes: stats.size,
-                message: `Screenshot saved to ${outputPath}`
+                browser_used: browser,
+                message: `Screenshot saved to ${outputPath} using ${browser}`
             };
 
         } catch (error) {
@@ -124,7 +162,8 @@ class ScreenshotMCPServer {
                         args.url,
                         args.width,
                         args.height,
-                        args.output_path
+                        args.output_path,
+                        args.browser
                     );
                     
                     return {
