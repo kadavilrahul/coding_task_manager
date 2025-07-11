@@ -1,7 +1,7 @@
-# Build code funtion by function
-# Don't do anything without asking
-# Before adding or modifying explain the function first and the need to take action
-# After my confirmation in y/n add or modify it
+***Build code funtion by function***
+### Don't do anything without asking
+### Before adding or modifying explain the function first and the need to take action
+### After my confirmation in y/n add or modify it
 # Mention number of lines that will be added if any
 # Plan and tell me how many functions and lines of code are approximately needed
 # Keep lines of code minimum
