@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  mcp-puppeteer:
+    build: .
+    container_name: mcp-puppeteer-server
+    environment:
+      - DOCKER_CONTAINER=true
+      - PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+    volumes:
+      - ./screenshots:/app/screenshots
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    security_opt:
+      - seccomp:unconfined
+    cap_add:
+      - SYS_ADMIN
+    command: npx @modelcontextprotocol/server-puppeteer

@@ -4,7 +4,7 @@ A comprehensive suite of AI-powered development tools that provides structured w
 
 ## 🚀 Overview
 
-The Coding Task Manager consists of six main components:
+The Coding Task Manager consists of seven main components:
 
 - **AI-Powered Development**: AI-powered PRD generation and development SOPs
 - **Basic Coding Assistant**: Basic coding assistant with function extraction tools  
@@ -12,6 +12,7 @@ The Coding Task Manager consists of six main components:
 - **File Versioning System**: File versioning system with real-time backup monitoring
 - **Flowchart Generator**: Streamlined flowchart generation in HTML and PNG formats
 - **Remote Linux Tools**: Automated remote Linux server login and command execution
+- **Docker MCP**: Model Context Protocol server setup with Docker for browser automation
 
 ## 📋 Table of Contents
 
@@ -25,6 +26,7 @@ The Coding Task Manager consists of six main components:
   - [File Versioning System](#file-versioning-system)
   - [Flowchart Generator](#flowchart-generator)
   - [Remote Linux Tools](#remote-linux-tools)
+  - [Docker MCP](#docker-mcp)
 - [🛠️ Utilities](#-utilities)
 - [💻 Installation](#-installation)
 - [📚 Usage Examples](#-usage-examples)
@@ -401,6 +403,108 @@ bash test_run_commands_with_manual_login.sh
 
 ---
 
+### Docker MCP
+
+**Purpose**: Model Context Protocol server setup with Docker for browser automation and AI-powered web interactions.
+
+#### 🛠️ Tools Included
+- `Dockerfile` - Custom MCP Puppeteer server image
+- `docker-compose.yml` - Docker Compose configuration for service management
+- `setup.sh` - Automated setup and deployment script
+- `configs/claude-config.json` - Claude Desktop integration configuration
+- `configs/mcp-puppeteer-server.json` - Basic MCP server configuration
+
+#### 📦 Features
+- **Browser Automation**: Puppeteer-based web automation through MCP protocol
+- **Docker Integration**: Containerized deployment with official and custom images
+- **Claude Desktop Support**: Ready-to-use configurations for AI integration
+- **Screenshot Capture**: Automated screenshot functionality with volume mounting
+- **Headless Operation**: Chromium-based headless browser automation
+- **Security Features**: Digitally signed images with Software Bill of Materials (SBOM)
+
+#### 📋 Prerequisites
+```bash
+# Docker and Docker Compose
+sudo apt-get update
+sudo apt-get install docker.io docker-compose
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Add user to docker group (optional)
+sudo usermod -aG docker $USER
+```
+
+#### 🚀 Usage
+
+**Quick Start**:
+```bash
+cd docker_mcp
+# Make setup script executable
+chmod +x scripts/setup.sh
+# Run automated setup
+./scripts/setup.sh
+```
+
+**Manual Setup**:
+```bash
+# Pull official image
+docker pull mcp/puppeteer:latest
+
+# Create screenshots directory
+mkdir -p screenshots
+
+# Run with Docker Compose
+docker-compose up -d
+
+# Or run directly
+docker run -i --rm --init -e DOCKER_CONTAINER=true mcp/puppeteer
+```
+
+#### ⚙️ Configuration
+
+**Claude Desktop Integration**:
+Add to your `claude_desktop_config.json`:
+```json
+{
+  "mcpServers": {
+    "puppeteer": {
+      "command": "docker",
+      "args": [
+        "run", "-i", "--rm", "--init",
+        "-e", "DOCKER_CONTAINER=true",
+        "mcp/puppeteer"
+      ]
+    }
+  }
+}
+```
+
+**Available MCP Tools**:
+- `navigate_to_url` - Navigate to specific URLs
+- `screenshot` - Capture webpage screenshots
+- `click_element` - Interact with webpage elements
+- `execute_javascript` - Run custom JavaScript
+- `fill_form` - Fill out web forms
+- `wait_for_element` - Wait for elements to appear
+
+#### 🔧 Management Commands
+```bash
+# Check running containers
+docker ps | grep puppeteer
+
+# View logs
+docker logs mcp-puppeteer-server
+
+# Stop services
+docker-compose down
+
+# Update images
+docker pull mcp/puppeteer:latest
+docker-compose restart
+```
+
+---
+
 ## 🛠️ Utilities
 
 The `utilities/` directory contains core tools that support all script collections:
@@ -574,6 +678,7 @@ ls -la */
 - ✅ **File Versioning System**: Stable - File versioning system with real-time monitoring
 - ✅ **Flowchart Generator**: Stable - Flowchart generation in HTML and PNG formats
 - ✅ **Remote Linux Tools**: Stable - Remote SSH automation and command execution
+- ✅ **Docker MCP**: Stable - Model Context Protocol server with Docker for browser automation
 - ✅ **Utilities**: Stable - Core utility tools for project management
 - 🔄 Continuous improvements and feature additions
 

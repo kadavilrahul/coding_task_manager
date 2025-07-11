@@ -1,0 +1,30 @@
+{
+  "mcpServers": {
+    "puppeteer": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--init",
+        "-e",
+        "DOCKER_CONTAINER=true",
+        "mcp/puppeteer"
+      ]
+    },
+    "puppeteer-custom": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--init",
+        "-v",
+        "./screenshots:/app/screenshots",
+        "-e",
+        "DOCKER_CONTAINER=true",
+        "mcp-puppeteer-custom"
+      ]
+    }
+  }
+}
