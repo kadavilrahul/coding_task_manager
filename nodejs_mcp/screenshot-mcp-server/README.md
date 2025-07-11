@@ -62,6 +62,16 @@ Once connected to Claude Code, you can use the screenshot tool:
 Take a screenshot of https://example.com
 ```
 
+**Important**: When running as root, you may encounter this error:
+```
+Running as root without --no-sandbox is not supported
+```
+
+To fix this, add the `--no-sandbox` flag to the chromium command in `screenshot-mcp-server.js`:
+```javascript
+const command = `chromium-browser --headless --disable-gpu --disable-software-rasterizer --no-sandbox --screenshot="${outputPath}" --window-size=${width},${height} --virtual-time-budget=10000 "${url}"`;
+```
+
 ### Available Parameters
 
 - `url` (required) - The webpage URL to screenshot
