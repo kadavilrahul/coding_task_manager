@@ -2,70 +2,6 @@
 
 A comprehensive suite of AI-powered development tools that provides structured workflows for software development, code analysis, and project management. This toolkit includes eight specialized script collections for different aspects of development assistance.
 
-## 🚀 Overview
-
-The Coding Task Manager consists of eight main components:
-
-- **AI-Powered Development**: AI-powered PRD generation and development SOPs
-- **Basic Coding Assistant**: Basic coding assistant with function extraction tools  
-- **Advanced Coding Assistant**: Advanced coding assistant with comprehensive analysis and reporting
-- **File Versioning System**: File versioning system with real-time backup monitoring
-- **Flowchart Generator**: Streamlined flowchart generation in HTML and PNG formats
-- **Remote Linux Tools**: Automated remote Linux server login and command execution
-- **Docker MCP**: Model Context Protocol server setup with Docker for browser automation
-- **Node.js MCP**: Production-ready MCP servers for e-commerce and AI agent businesses
-
-## 📋 Table of Contents
-
-- [✨ Features](#-features)
-- [🚀 Quick Start](#-quick-start)
-- [🛠️ Root Utility Scripts](#root-utility-scripts)
-- [📁 Script Collections](#-script-collections)
-  - [AI-Powered Development Tools](#ai-powered-development-tools)
-  - [Basic Coding Assistant](#basic-coding-assistant)
-  - [Advanced Coding Assistant](#advanced-coding-assistant)
-  - [File Versioning System](#file-versioning-system)
-  - [Flowchart Generator](#flowchart-generator)
-  - [Remote Linux Tools](#remote-linux-tools)
-  - [Docker MCP](#docker-mcp)
-  - [Node.js MCP](#nodejs-mcp)
-- [🛠️ Utilities](#-utilities)
-- [💻 Installation](#-installation)
-- [📚 Usage Examples](#-usage-examples)
-- [⚙️ Configuration](#️-configuration)
-- [🔧 Troubleshooting](#-troubleshooting)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-- [📊 Project Statistics](#-project-statistics)
-- [🔗 Related Projects](#-related-projects)
-- [🚦 Status](#-status)
-
-## ✨ Features
-
-### 🤖 AI-Powered Development
-- **PRD Generation**: Create detailed Product Requirements Documents using Gemini/Claude AI
-- **Standard Operating Procedures**: JSON-based SOPs for AI-assisted development
-- **MCP Integration**: Model Context Protocol setup for GitHub Copilot and Cline
-- **Code Generation Guidelines**: Structured prompts for consistent code quality
-
-### 📊 Code Analysis & Metrics
-- **Line Counting**: Comprehensive code metrics with CLOC integration
-- **Function Extraction**: Multiple methods (grep, ctags, AST) for function discovery
-- **Pattern Search**: Fast text search with RipGrep/grep fallback
-- **Quality Linting**: ShellCheck, JSON validation, and code quality checks
-
-### 🔍 Project Intelligence
-- **Structure Analysis**: Automated project structure generation
-- **Sensitive Data Scanning**: Security-focused content analysis
-- **Git Statistics**: Repository metrics and contributor analysis
-- **Comprehensive Reporting**: Markdown reports with timestamped outputs
-
-### 🔄 File Management & Backup
-- **Real-time Monitoring**: Automatic file change detection with inotify
-- **Timestamped Backups**: Automatic backup creation on file modifications
-- **Smart Filtering**: Configurable ignore patterns for selective monitoring
-- **Background Operation**: Non-intrusive process management with PID tracking
-
 ## 🚀 Quick Start
 
 1. **Clone the repository**:
@@ -156,6 +92,69 @@ Interactive tool for counting and comparing total lines of code across multiple 
 # Follow prompts to enter codebase paths
 # Type 'quit' or 'q' to finish and generate report
 ```
+## 🚀 Overview
+
+The Coding Task Manager consists of eight main components:
+
+- **AI-Powered Development**: AI-powered PRD generation and development SOPs
+- **Basic Coding Assistant**: Basic coding assistant with function extraction tools  
+- **Advanced Coding Assistant**: Advanced coding assistant with comprehensive analysis and reporting
+- **File Versioning System**: File versioning system with real-time backup monitoring
+- **Flowchart Generator**: Streamlined flowchart generation in HTML and PNG formats
+- **Remote Linux Tools**: Automated remote Linux server login and command execution
+- **Docker MCP**: Model Context Protocol server setup with Docker for browser automation
+- **Node.js MCP**: Production-ready MCP servers for e-commerce and AI agent businesses
+
+## 📋 Table of Contents
+
+- [✨ Features](#-features)
+- [🚀 Quick Start](#-quick-start)
+- [🛠️ Root Utility Scripts](#root-utility-scripts)
+- [📁 Script Collections](#-script-collections)
+  - [AI-Powered Development Tools](#ai-powered-development-tools)
+  - [Basic Coding Assistant](#basic-coding-assistant)
+  - [Advanced Coding Assistant](#advanced-coding-assistant)
+  - [File Versioning System](#file-versioning-system)
+  - [Flowchart Generator](#flowchart-generator)
+  - [Remote Linux Tools](#remote-linux-tools)
+  - [Docker MCP](#docker-mcp)
+  - [Node.js MCP](#nodejs-mcp)
+- [🛠️ Utilities](#-utilities)
+- [💻 Installation](#-installation)
+- [📚 Usage Examples](#-usage-examples)
+- [⚙️ Configuration](#️-configuration)
+- [🔧 Troubleshooting](#-troubleshooting)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
+- [📊 Project Statistics](#-project-statistics)
+- [🔗 Related Projects](#-related-projects)
+- [🚦 Status](#-status)
+
+## ✨ Features
+
+### 🤖 AI-Powered Development
+- **PRD Generation**: Create detailed Product Requirements Documents using Gemini/Claude AI
+- **Standard Operating Procedures**: JSON-based SOPs for AI-assisted development
+- **MCP Integration**: Model Context Protocol setup for GitHub Copilot and Cline
+- **Code Generation Guidelines**: Structured prompts for consistent code quality
+
+### 📊 Code Analysis & Metrics
+- **Line Counting**: Comprehensive code metrics with CLOC integration
+- **Function Extraction**: Multiple methods (grep, ctags, AST) for function discovery
+- **Pattern Search**: Fast text search with RipGrep/grep fallback
+- **Quality Linting**: ShellCheck, JSON validation, and code quality checks
+
+### 🔍 Project Intelligence
+- **Structure Analysis**: Automated project structure generation
+- **Sensitive Data Scanning**: Security-focused content analysis
+- **Git Statistics**: Repository metrics and contributor analysis
+- **Comprehensive Reporting**: Markdown reports with timestamped outputs
+
+### 🔄 File Management & Backup
+- **Real-time Monitoring**: Automatic file change detection with inotify
+- **Timestamped Backups**: Automatic backup creation on file modifications
+- **Smart Filtering**: Configurable ignore patterns for selective monitoring
+- **Background Operation**: Non-intrusive process management with PID tracking
 
 ---
 
