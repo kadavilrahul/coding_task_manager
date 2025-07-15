@@ -41,8 +41,19 @@ chmod +x screenshot-mcp-server.js
 
 ### 3. Add to Claude Code
 ```bash
-# Add MCP server to Claude Code (use absolute path)
-claude mcp add screenshot-server /path/to/screenshot-mcp-server.js
+# Add MCP server to Claude Code configuration
+# Option 1: Use the install script
+./install.sh
+
+# Option 2: Manual configuration
+# Edit ~/.config/claude-desktop/claude_desktop_config.json
+# Add the following to mcpServers:
+{
+  "screenshot-mcp-server": {
+    "command": "node",
+    "args": ["/root/coding_task_manager/nodejs_mcp/screenshot-mcp-server/screenshot-mcp-server.js"]
+  }
+}
 
 # Verify installation
 claude mcp list
@@ -139,9 +150,9 @@ sudo apt-get install chromium-browser
 # Fix permissions
 chmod +x screenshot-mcp-server.js
 
-# Remove and re-add server
-claude mcp remove screenshot-server
-claude mcp add screenshot-server /full/path/to/screenshot-mcp-server.js
+# Restart Claude Desktop to reload configuration
+# Or manually edit ~/.config/claude-desktop/claude_desktop_config.json
+# to ensure correct path: /root/coding_task_manager/nodejs_mcp/screenshot-mcp-server/screenshot-mcp-server.js
 ```
 
 ## Development Notes

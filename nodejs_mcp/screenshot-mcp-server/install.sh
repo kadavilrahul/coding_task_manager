@@ -55,29 +55,72 @@ echo "📁 Server path: $SERVER_PATH"
 echo
 
 # Add to Claude Code
-echo "3. Adding MCP server to Claude Code..."
+echo "3. Adding MCP server to Claude Code configuration..."
 
-# Remove existing server if present
-claude mcp remove screenshot-server 2>/dev/null || true
+# Path to Claude desktop config
+CONFIG_DIR="$HOME/.config/claude-desktop"
+CONFIG_FILE="$CONFIG_DIR/claude_desktop_config.json"
 
-# Add server
-claude mcp add screenshot-server "$SERVER_PATH"
+# Create config directory if it doesn't exist
+mkdir -p "$CONFIG_DIR"
 
-if [ $? -eq 0 ]; then
-    echo "✅ MCP server added successfully"
+# Create or update config file
+if [ -f "$CONFIG_FILE" ]; then
+    echo "✅ Updating existing Claude desktop config"
+    # Backup existing config
+    cp "$CONFIG_FILE" "$CONFIG_FILE.backup"
 else
-    echo "❌ Failed to add MCP server"
-    exit 1
+    echo "✅ Creating new Claude desktop config"
+    # Create basic config structure
+    cat > "$CONFIG_FILE" << EOF
+{
+  "mcpServers": {}
+}
+EOF
 fi
+
+# Add screenshot-mcp-server to config
+python3 -c "
+import json
+import sys
+
+config_file = '$CONFIG_FILE'
+server_path = '$SERVER_PATH'
+
+try:
+    with open(config_file, 'r') as f:
+        config = json.load(f)
+    
+    if 'mcpServers' not in config:
+        config['mcpServers'] = {}
+    
+    config['mcpServers']['screenshot-mcp-server'] = {
+        'command': 'node',
+        'args': [server_path]
+    }
+    
+    with open(config_file, 'w') as f:
+        json.dump(config, f, indent=2)
+    
+    print('✅ MCP server added to configuration')
+except Exception as e:
+    print(f'❌ Failed to update config: {e}')
+    sys.exit(1)
+"
 
 echo
 
 # Verify installation
 echo "4. Verifying installation..."
 
-# List MCP servers
-echo "Current MCP servers:"
-claude mcp list
+# Show config file contents
+echo "Current Claude desktop config:"
+cat "$CONFIG_FILE"
+
+echo
+echo "To verify MCP server is working:"
+echo "1. Restart Claude Desktop application"
+echo "2. Run: claude mcp list"
 
 echo
 echo "=== Installation Complete ==="

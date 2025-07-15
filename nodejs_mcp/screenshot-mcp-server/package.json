@@ -9,7 +9,11 @@
   "scripts": {
     "start": "node screenshot-mcp-server.js"
   },
-  "keywords": ["mcp", "screenshot", "webpage"],
+  "keywords": [
+    "mcp",
+    "screenshot",
+    "webpage"
+  ],
   "author": "",
   "license": "MIT",
   "engines": {
