@@ -15,9 +15,9 @@ error() { echo -e "${RED}[ERROR]${NC} $1"; exit 1; }
 
 # Install tools if missing
 install_tools() {
-    if ! command -v dot >/dev/null || ! command -v plantuml >/dev/null; then
+    if ! command -v dot >/dev/null || ! command -v plantuml >/dev/null || ! command -v graph-easy >/dev/null; then
         info "Installing diagram tools..."
-        sudo apt update -qq && sudo apt install -y graphviz plantuml default-jre
+        sudo apt update -qq && sudo apt install -y graphviz plantuml default-jre libgraph-easy-perl boxes
     fi
 }
 
@@ -201,6 +201,32 @@ EOF
     timeout 10 plantuml -tpng "flowchart_${NAME}.puml" 2>/dev/null
 }
 
+# Generate ASCII flowchart
+gen_ascii() {
+    cat > "flowchart_${NAME}.txt" << 'EOF'
+[Install] -> [CLI] -> [TUI]
+[CLI] -> [Server] -> [App]
+[App] -> [Config]
+[App] -> [Auth] 
+[App] -> [Session]
+[Session] -> [Agent] -> [Provider]
+[Agent] -> [Tools] -> [IDE] -> [LSP]
+[Tools] -> [File]
+[Session] -> [Storage]
+[App] -> [MCP]
+[Server] -> [SDK]
+[VSCode] -> [SDK]
+[GitHub] -> [SDK] 
+[App] -> [Share] -> [Web]
+EOF
+    
+    # Generate ASCII diagram
+    graph-easy --input="flowchart_${NAME}.txt" --as=ascii > "flowchart_${NAME}_ascii.txt" 2>/dev/null
+    
+    # Add title
+    sed -i '1i\\n'"$NAME"' Architecture (ASCII)\n========================\n' "flowchart_${NAME}_ascii.txt"
+}
+
 # Main
 main() {
     info "Simple Flowchart Generator"
@@ -220,6 +246,7 @@ main() {
     info "Generating diagrams for: $NAME"
     gen_graphviz && success "GraphViz: flowchart_${NAME}_graphviz.png"
     gen_plantuml && success "PlantUML: flowchart_${NAME}.png"
+    gen_ascii && success "ASCII: flowchart_${NAME}_ascii.txt"
 }
 
 main "$@"
