@@ -6,7 +6,7 @@ A streamlined setup for generating flowcharts in HTML and PNG formats. This tool
 ## Features
 - Command line based flowchart generation environment
 - Automated dependency management and setup
-- HTML and PNG output formats
+- PNG output formats
 - Easy-to-use command line interface
 - Automatic environment configuration
 
@@ -14,27 +14,15 @@ A streamlined setup for generating flowcharts in HTML and PNG formats. This tool
 - Linux system with GUI (GUI needed to view files)
 - Tested on Ubuntu 24.04 LTS
 
-**Note:** This setup should work on most other Linux distributions with minimal modifications. For headless servers, ensure you have GUI access through a remote desktop solution.
+**Note:** This setup should work on most other Linux distributions with minimal modifications. 
+For headless servers, ensure you have GUI access through a remote desktop solution.
 
 ## Installation & Usage
 
 ### First time setup:
 ```bash
 cd flowchart_generator
-bash setup_flowchart.sh
-```
-
-### Subsequent runs:
-```bash
-bash generate.sh
-```
-
-### Alternative Setup (move to project root):
-```bash
-# Move files to current directory where other scripts are present
-mv setup_flowchart.sh generate.sh ../
-cd ..
-bash setup_flowchart.sh
+bash flowchart.sh
 ```
 
 ## Workflow
