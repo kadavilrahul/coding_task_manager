@@ -51,7 +51,7 @@ find_dirs() {
 
 # Generate GraphViz with component relationships
 gen_graphviz() {
-    cat > "flowchart_${NAME}.dot" << EOF
+    cat > "$DIR/flowchart_${NAME}.dot" << EOF
 digraph ${NAME} {
     rankdir=TB;
     node [shape=box, style=filled];
@@ -114,12 +114,12 @@ digraph ${NAME} {
     Share -> Web;
 }
 EOF
-    timeout 10 dot -Tpng "flowchart_${NAME}.dot" -o "flowchart_${NAME}_graphviz.png" 2>/dev/null
+    timeout 10 dot -Tpng "$DIR/flowchart_${NAME}.dot" -o "$DIR/flowchart_${NAME}_graphviz.png" 2>/dev/null
 }
 
 # Generate PlantUML with detailed architecture
 gen_plantuml() {
-    cat > "flowchart_${NAME}.puml" << EOF
+    cat > "$DIR/flowchart_${NAME}.puml" << EOF
 @startuml
 title $NAME Architecture Diagram
 
@@ -198,12 +198,12 @@ Share --> Web
 
 @enduml
 EOF
-    timeout 10 plantuml -tpng "flowchart_${NAME}.puml" 2>/dev/null
+    timeout 10 plantuml -tpng "$DIR/flowchart_${NAME}.puml" 2>/dev/null
 }
 
 # Generate ASCII flowchart
 gen_ascii() {
-    cat > "flowchart_${NAME}.txt" << 'EOF'
+    cat > "$DIR/flowchart_${NAME}.txt" << 'EOF'
 [Install] -> [CLI] -> [TUI]
 [CLI] -> [Server] -> [App]
 [App] -> [Config]
@@ -221,10 +221,10 @@ gen_ascii() {
 EOF
     
     # Generate ASCII diagram
-    graph-easy --input="flowchart_${NAME}.txt" --as=ascii > "flowchart_${NAME}_ascii.txt" 2>/dev/null
+    graph-easy --input="$DIR/flowchart_${NAME}.txt" --as=ascii > "$DIR/flowchart_${NAME}_ascii.txt" 2>/dev/null
     
     # Add title
-    sed -i '1i\\n'"$NAME"' Architecture (ASCII)\n========================\n' "flowchart_${NAME}_ascii.txt"
+    sed -i '1i\\n'"$NAME"' Architecture (ASCII)\n========================\n' "$DIR/flowchart_${NAME}_ascii.txt"
 }
 
 # Main
@@ -244,9 +244,9 @@ main() {
     find_dirs
     
     info "Generating diagrams for: $NAME"
-    gen_graphviz && success "GraphViz: flowchart_${NAME}_graphviz.png"
-    gen_plantuml && success "PlantUML: flowchart_${NAME}.png"
-    gen_ascii && success "ASCII: flowchart_${NAME}_ascii.txt"
+    gen_graphviz && success "GraphViz: $DIR/flowchart_${NAME}_graphviz.png"
+    gen_plantuml && success "PlantUML: $DIR/flowchart_${NAME}.png"
+    gen_ascii && success "ASCII: $DIR/flowchart_${NAME}_ascii.txt"
 }
 
 main "$@"
